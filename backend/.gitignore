@@ -1,0 +1,36 @@
+# Ignore the SQLite database file
+db.sqlite3
+
+# Ignore Python bytecode files
+*.pyc
+__pycache__/
+
+# Ignore virtual environment directory
+venv/
+env/
+.virtualenv/
+
+# Ignore VSCode specific files
+.vscode/
+
+# Ignore Django migration files
+*/migrations/__pycache__/
+*/migrations/*.pyc
+*/migrations/*.pyo
+*/migrations/*.pyd
+*/migrations/*.pdb
+
+# Ignore compiled Python files
+*.py[cod]
+
+# Ignore Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore other IDE specific files
+.idea/
+*.swp
+*.swo

@@ -3,5 +3,5 @@ from django.urls import re_path, include
 
 urlpatterns = [
     re_path('admin/', admin.site.urls),
-    re_path('auth/', include('auth.urls')) 
+    re_path('auth/', include('user_auth.urls')) 
 ]
