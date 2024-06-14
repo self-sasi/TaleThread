@@ -42,9 +42,10 @@ def login(request):
         return Response({"error": "Invalid credentials"}, status=status.HTTP_400_BAD_REQUEST)
 
 
-@api_view(['GET'])
-def test_token(request):
-    return Response({})
+# to kushagra : not necessary as everything seems to be working, intialise and use if necessary
+# @api_view(['GET'])
+# def test_token(request):
+#     return Response({})
 
 
 
