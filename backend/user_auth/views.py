@@ -6,6 +6,8 @@ from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404
 from .serializers import UserSerializer
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.decorators import permission_classes
 
 
 # ENDPOINT : signup
@@ -44,6 +46,7 @@ def login(request):
 
 # ENDPOINT : logout
 @api_view(['POST'])
+@permission_classes([IsAuthenticated])
 def logout(request):
     
     try:
@@ -58,6 +61,23 @@ def logout(request):
         
     except Token.DoesNotExist:
         return Response({"error": "Invalid token"}, status=status.HTTP_400_BAD_REQUEST)
+    
+
+# ENDPOINT : change_password
+@api_view(['PUT'])
+@permission_classes([IsAuthenticated])
+def change_password(request):
+    
+    user = request.user
+    new_password = request.data.get('new_password')
+    
+    user.set_password(new_password)
+    user.save()
+    
+    Token.objects.filter(user = user).delete()
+    new_token = Token.objects.create(user=user)
+    
+    return Response({"message": "Password changed successfully", "token": new_token.key}, status=status.HTTP_200_OK)
 
 
 
