@@ -42,10 +42,22 @@ def login(request):
         return Response({"error": "Invalid credentials"}, status=status.HTTP_400_BAD_REQUEST)
 
 
-# to kushagra : not necessary as everything seems to be working, intialise and use if necessary
-# @api_view(['GET'])
-# def test_token(request):
-#     return Response({})
+# ENDPOINT : logout
+@api_view(['POST'])
+def logout(request):
+    
+    try:
+        
+        token = request.auth
+        
+        if token:
+            token.delete()
+            return Response({"message": "Successfully logged out"}, status=status.HTTP_200_OK)
+        else:
+            return Response({"error": "Invalid token"}, status=status.HTTP_400_BAD_REQUEST)
+        
+    except Token.DoesNotExist:
+        return Response({"error": "Invalid token"}, status=status.HTTP_400_BAD_REQUEST)
 
 
 
