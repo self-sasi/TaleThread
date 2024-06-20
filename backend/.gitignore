@@ -14,6 +14,7 @@ env/
 .vscode/
 
 # Ignore Django migration files
+*/migrations
 */migrations/__pycache__/
 */migrations/*.pyc
 */migrations/*.pyo
