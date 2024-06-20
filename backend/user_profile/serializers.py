@@ -9,11 +9,16 @@ class UserSerializer(serializers.ModelSerializer):
 
 class ProfileSerializer(serializers.ModelSerializer):
     user = UserSerializer(read_only=True)
+    friendlist = serializers.SerializerMethodField()
 
     class Meta:
         model = Profile
         fields = ['user', 'avatar', 'fav_genres', 'age', 'inktokens', 'friendlist']
-        read_only_fields = ['inktokens', 'friendlist']
+        read_only_fields = ['inktokens']
+
+    def get_friendlist(self, obj):
+        friends = obj.friendlist.all()
+        return UserSerializer([friend.user for friend in friends], many=True).data
 
 class PublicProfileSerializer(serializers.ModelSerializer):
     user = UserSerializer(read_only=True)

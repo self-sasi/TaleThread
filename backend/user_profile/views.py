@@ -30,3 +30,36 @@ def update_profile(request):
         serializer.save()
         return Response(serializer.data)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+# ENDPOINT : add_friend
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def add_friend(request, username):
+    user = request.user
+    friend = get_object_or_404(User, username=username)
+    user_profile = get_object_or_404(Profile, user=user)
+    friend_profile = get_object_or_404(Profile, user=friend)
+
+    if friend_profile not in user_profile.friendlist.all():
+        user_profile.friendlist.add(friend_profile)
+        friend_profile.friendlist.add(user_profile)
+        return Response({"message": f"{friend.username} has been added to your friend list."}, status=status.HTTP_200_OK)
+    else:
+        return Response({"message": f"{friend.username} is already in your friend list."}, status=status.HTTP_400_BAD_REQUEST)
+
+
+# ENDPOINT : remove_friend
+@api_view(['DELETE'])
+@permission_classes([IsAuthenticated])
+def remove_friend(request, username):
+    user = request.user
+    friend = get_object_or_404(User, username=username)
+    user_profile = get_object_or_404(Profile, user=user)
+    friend_profile = get_object_or_404(Profile, user=friend)
+
+    if friend_profile in user_profile.friendlist.all():
+        user_profile.friendlist.remove(friend_profile)
+        friend_profile.friendlist.remove(user_profile)
+        return Response({"message": f"{friend.username} has been removed from your friend list."}, status=status.HTTP_200_OK)
+    else:
+        return Response({"message": f"{friend.username} is not in your friend list."}, status=status.HTTP_400_BAD_REQUEST)
