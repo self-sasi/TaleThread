@@ -24,6 +24,17 @@ class ContributionViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         thread_id = self.kwargs['thread_id']
         thread = Thread.objects.get(id=thread_id)
+        
+        content = serializer.validated_data['content']
+        word_count = len(content.split())
+        contributors_count = thread.contributions.count()
+        
+        if word_count > thread.max_words:
+            return Response({"detail": "Word limit exceeded"}, status=status.HTTP_400_BAD_REQUEST)
+        
+        elif contributors_count >= thread.max_contributors:
+            return Response({"detail": "Maximum number of contributors reached"}, status=status.HTTP_400_BAD_REQUEST)
+        
         serializer.save(thread=thread, user=self.request.user.profile)
 
 class GenreViewSet(viewsets.ModelViewSet):
