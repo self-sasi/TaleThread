@@ -1,9 +1,10 @@
-from rest_framework import viewsets
+from rest_framework import viewsets, status
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-from rest_framework import status
+from rest_framework.decorators import action
 from .models import Thread, Contribution, Genre
 from .serializers import ThreadSerializer, ContributionSerializer, GenreSerializer
+from django.shortcuts import get_object_or_404
 
 class ThreadViewSet(viewsets.ModelViewSet):
     queryset = Thread.objects.all()
@@ -11,7 +12,16 @@ class ThreadViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]
 
     def perform_create(self, serializer):
-        serializer.save(owner=self.request.user.profile)
+        user_profile = self.request.user.profile
+        if user_profile.inktokens < 50:
+            self.permission_denied(
+                self.request,
+                message="Not enough inktokens to create a thread",
+                code=status.HTTP_400_BAD_REQUEST
+            )
+        serializer.save(owner=user_profile)
+        user_profile.inktokens -= 50
+        user_profile.save()
 
 class ContributionViewSet(viewsets.ModelViewSet):
     serializer_class = ContributionSerializer
@@ -30,12 +40,34 @@ class ContributionViewSet(viewsets.ModelViewSet):
         contributors_count = thread.contributions.count()
         
         if word_count > thread.max_words:
-            return Response({"detail": "Word limit exceeded"}, status=status.HTTP_400_BAD_REQUEST)
+            self.permission_denied(
+                self.request,
+                message="Word limit exceeded.",
+                code=status.HTTP_400_BAD_REQUEST
+            )
         
         elif contributors_count >= thread.max_contributors:
-            return Response({"detail": "Maximum number of contributors reached"}, status=status.HTTP_400_BAD_REQUEST)
+            self.permission_denied(
+                self.request,
+                message="Maximum contributions reached.",
+                code=status.HTTP_400_BAD_REQUEST
+            )
         
-        serializer.save(thread=thread, user=self.request.user.profile)
+        contribution = serializer.save(thread=thread, user=self.request.user.profile)
+        self.request.user.profile.inktokens += 50
+        self.request.user.profile.save()
+
+    @action(detail=True, methods=['post'])
+    def upvote(self, request, pk=None, thread_id=None):
+        contribution = get_object_or_404(Contribution, pk=pk, thread_id=thread_id)
+        contribution.upvote(request.user.profile)
+        return Response({"status": "upvoted"})
+
+    @action(detail=True, methods=['post'])
+    def downvote(self, request, pk=None, thread_id=None):
+        contribution = get_object_or_404(Contribution, pk=pk, thread_id=thread_id)
+        contribution.downvote(request.user.profile)
+        return Response({"status": "downvoted"})
 
 class GenreViewSet(viewsets.ModelViewSet):
     queryset = Genre.objects.all()
