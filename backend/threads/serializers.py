@@ -9,6 +9,8 @@ class GenreSerializer(serializers.ModelSerializer):
 class ContributionSerializer(serializers.ModelSerializer):
     thread = serializers.ReadOnlyField(source='thread.id')
     user = serializers.ReadOnlyField(source='user.user.username')
+    upvoters = serializers.StringRelatedField(many=True, read_only=True)
+    downvoters = serializers.StringRelatedField(many=True, read_only=True)
 
     class Meta:
         model = Contribution

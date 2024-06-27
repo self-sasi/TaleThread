@@ -13,7 +13,6 @@ class Thread(models.Model):
     max_contributors = models.IntegerField(default=10)
     max_words = models.IntegerField(default=150)
     min_rating = models.FloatField(default=0.0)
-    # genres = models.ManyToManyField(Genre)
     contributors = models.ManyToManyField(Profile, through='ThreadContributor', related_name='contributed_threads')
 
 class ThreadContributor(models.Model):
@@ -31,3 +30,32 @@ class Contribution(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     upvotes = models.IntegerField(default=0)
     downvotes = models.IntegerField(default=0)
+    upvoters = models.ManyToManyField(Profile, related_name='upvoted_contributions', blank=True)
+    downvoters = models.ManyToManyField(Profile, related_name='downvoted_contributions', blank=True)
+
+    def upvote(self, user):
+        if user in self.downvoters.all():
+            self.downvoters.remove(user)
+            self.downvotes -= 1
+            self.user.inktokens = max(self.user.inktokens + 25, 0)
+
+        if user not in self.upvoters.all():
+            self.upvoters.add(user)
+            self.upvotes += 1
+            self.user.inktokens += 100
+            self.save()
+            self.user.save()
+
+    def downvote(self, user):
+        if user in self.upvoters.all():
+            self.upvoters.remove(user)
+            self.upvotes -= 1
+            self.user.inktokens -= 100
+            self.user.save()
+
+        if user not in self.downvoters.all():
+            self.downvoters.add(user)
+            self.downvotes += 1
+            self.user.inktokens = max(self.user.inktokens - 25, 0)
+            self.save()
+            self.user.save()
