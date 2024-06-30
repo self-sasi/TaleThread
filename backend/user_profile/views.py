@@ -27,6 +27,7 @@ def update_profile(request):
     profile = get_object_or_404(Profile, user=request.user)
     serializer = ProfileSerializer(profile, data=request.data, partial=True)
     if serializer.is_valid():
+
         serializer.save()
         return Response(serializer.data)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -88,6 +89,10 @@ def accept_friend_request(request, username):
         user_profile.friend_requests_received.remove(friend_profile)
         user_profile.friendlist.add(friend_profile)
         friend_profile.friendlist.add(user_profile)
+        user_profile.inktokens += 5
+        friend_profile.inktokens += 5
+        user_profile.save()
+        friend_profile.save()  
         return Response({"message": f"Friend request from {friend.username} accepted."}, status=status.HTTP_200_OK)
     else:
         return Response({"message": f"No friend request from {friend.username}."}, status=status.HTTP_400_BAD_REQUEST)
