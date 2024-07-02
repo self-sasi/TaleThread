@@ -10,6 +10,7 @@ class UserSerializer(serializers.ModelSerializer):
 class ProfileSerializer(serializers.ModelSerializer):
     user = UserSerializer(read_only=True)
     friendlist = serializers.SerializerMethodField()
+    friend_requests_received = serializers.SerializerMethodField()
 
     class Meta:
         model = Profile
@@ -19,7 +20,6 @@ class ProfileSerializer(serializers.ModelSerializer):
     def get_friendlist(self, obj):
         friends = obj.friendlist.all()
         return UserSerializer([friend.user for friend in friends], many=True).data
-    
     
     def get_friend_requests_received(self, obj):
         requests = obj.friend_requests_received.all()
