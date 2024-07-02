@@ -58,7 +58,7 @@ from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from rest_framework import status
 from .models import Profile
-from .serializers import ProfileSerializer, PublicProfileSerializer
+from .serializers import ProfileSerializer, PublicProfileSerializer,UserSerializer
 from django.shortcuts import get_object_or_404
 
 # ENDPOINT : send_friend_request
@@ -111,3 +111,12 @@ def reject_friend_request(request, username):
         return Response({"message": f"Friend request from {friend.username} rejected."}, status=status.HTTP_200_OK)
     else:
         return Response({"message": f"No friend request from {friend.username}."}, status=status.HTTP_400_BAD_REQUEST)
+    
+    
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def pending_friend_requests(request):
+    user_profile = get_object_or_404(Profile, user=request.user)
+    friend_requests = user_profile.friend_requests_received.all()
+    serializer = UserSerializer([req.user for req in friend_requests], many=True)
+    return Response(serializer.data)
