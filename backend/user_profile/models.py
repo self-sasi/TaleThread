@@ -8,7 +8,6 @@ class Profile(models.Model):
     age = models.IntegerField(null=True, blank=True)
     inktokens = models.IntegerField(default=25)
     friendlist = models.ManyToManyField("self", symmetrical=True, blank=True)
-    friendlist = models.ManyToManyField('self', blank=True)
     friend_requests_sent = models.ManyToManyField('self', related_name='friend_requests_received', symmetrical=False, blank=True)
     def __str__(self):
         return self.user.username
