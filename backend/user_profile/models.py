@@ -6,7 +6,7 @@ class Profile(models.Model):
     avatar = models.ImageField(upload_to='avatars/', null=True, blank=True)
     fav_genres = models.CharField(max_length=255) 
     age = models.IntegerField(null=True, blank=True)
-    inktokens = models.IntegerField(default=25)
+    inktokens = models.IntegerField(default=50)
     friendlist = models.ManyToManyField("self", symmetrical=True, blank=True)
     friend_requests_sent = models.ManyToManyField('self', related_name='friend_requests_received', symmetrical=False, blank=True)
     def __str__(self):

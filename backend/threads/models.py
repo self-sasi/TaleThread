@@ -4,6 +4,9 @@ from user_profile.models import Profile
 class Genre(models.Model):
     name = models.CharField(max_length=100)
 
+    def __str__(self):
+        return self.name
+
 class Thread(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField()
@@ -14,6 +17,7 @@ class Thread(models.Model):
     max_words = models.IntegerField(default=150)
     min_rating = models.FloatField(default=0.0)
     contributors = models.ManyToManyField(Profile, through='ThreadContributor', related_name='contributed_threads')
+    genre = models.ForeignKey(Genre, on_delete=models.CASCADE, related_name='threads')
 
 class ThreadContributor(models.Model):
     thread = models.ForeignKey(Thread, on_delete=models.CASCADE)

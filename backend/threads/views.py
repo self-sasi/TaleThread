@@ -5,7 +5,6 @@ from rest_framework.decorators import action
 from .models import Thread, Contribution, Genre
 from .serializers import ThreadSerializer, ContributionSerializer, GenreSerializer
 from django.shortcuts import get_object_or_404
-
 class ThreadViewSet(viewsets.ModelViewSet):
     queryset = Thread.objects.all()
     serializer_class = ThreadSerializer
@@ -19,10 +18,20 @@ class ThreadViewSet(viewsets.ModelViewSet):
                 message="Not enough inktokens to create a thread",
                 code=status.HTTP_400_BAD_REQUEST
             )
-        serializer.save(owner=user_profile)
+        serializer.save()
         user_profile.inktokens -= 50
         user_profile.save()
 
+    @action(detail=False, methods=['get'], url_path='genre/(?P<genre_name>[^/.]+)')
+    def list_by_genre(self, request, genre_name=None):
+        genre = get_object_or_404(Genre, name=genre_name)
+        threads = Thread.objects.filter(genre=genre)
+        page = self.paginate_queryset(threads)
+        if page is not None:
+            serializer = self.get_serializer(page, many=True)
+            return self.get_paginated_response(serializer.data)
+        serializer = self.get_serializer(threads, many=True)
+        return Response(serializer.data)
 class ContributionViewSet(viewsets.ModelViewSet):
     serializer_class = ContributionSerializer
     permission_classes = [IsAuthenticated]
