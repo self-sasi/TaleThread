@@ -1,0 +1,176 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Dosis", sans-serif;
+}
+
+.sidebar {
+  position: relative;
+  width: 256px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #2b2b2b;
+  padding: 24px;
+  border-radius: 30px;
+  transition: width 0.7s ease;
+  margin: 0;
+}
+
+.sidebar .head {
+  display: flex;
+  gap: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #3a3a3a;
+}
+
+.logo {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.logo img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.heading p {
+  color: transparent;
+  font-size: 24px;
+  font-weight: 700;
+  background-image: linear-gradient(45deg, #ff00ff 10%, #00ffff 50%, #66ff66 90%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  opacity: 1;
+  transition: opacity 0.7s ease, visibility 0.7s ease;
+}
+
+.menu ul, .logout ul {
+  padding: 0;
+}
+
+.menu ul li, .logout ul li {
+  position: relative;
+  list-style: none;
+  margin-bottom: 12px;
+}
+
+.menu ul li a {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  font-size: 20px;
+  font-weight: 500;
+  color: #b0b0b0;
+  text-decoration: none;
+  padding: 16px 17px;
+  border-radius: 8px;
+  transition: all 0.3s;
+}
+
+.menu ul li:hover a,
+.menu ul li.active a{
+  color: #fff;
+  background-color: #3a3a3a;
+}
+
+.menu ul li .icon, .logout ul li .icon {
+  font-size: 28px;
+}
+
+.menu ul li .text, .logout ul li .text {
+  flex: 1;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.7s ease-in, visibility 0.7s ease-in;
+}
+
+.nav {
+  padding-top: 10px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.menu-btn {
+  position: absolute;
+  right: -12px;
+  top: 3.5%;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #2b2b2b;
+  border: 2px solid #3a3a3a;
+  background-color: #1c1c1c;
+}
+
+.menu-btn:hover {
+  color: #fff;
+  background-color: #3a3a3a;
+}
+
+.menu-btn i {
+  transition: all 0.3s smooth;
+}
+
+.sidebar.active {
+  width: 102px;
+}
+
+.sidebar.active .menu-btn i {
+  transform: rotate(180deg);
+}
+
+.sidebar.active .menu > ul > li > a .text,
+.sidebar.active .logout ul li a .text {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.1s ease-out, visibility 0.1s ease-out;
+}
+
+.sidebar:not(.active) .menu > ul > li > a .text,
+.sidebar:not(.active) .logout ul li a .text {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.7s ease-in, visibility 0.7s ease-in;
+}
+
+.sidebar.active .heading p {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.1s ease-out, visibility 0.1s ease-out;
+}
+
+.sidebar:not(.active) .heading p {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.7s ease-in, visibility 0.7s ease-in;
+}
+
+.logout ul li a {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  font-size: 20px;
+  font-weight: 500;
+  color: #fff;
+  text-decoration: none;
+  padding: 16px 17px;
+  border-radius: 8px;
+  background-image: radial-gradient(circle, #ff6666 0%, #ff4d4d 70%, #ff3333 100%);
+  transition: all 0.3s;
+}
+
