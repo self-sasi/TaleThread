@@ -13,7 +13,7 @@ export class SidebarComponent {
 
   // properties
 
-  isActive: boolean = true;
+  isActive: boolean = false;
 
   toggleSidebar() {
     this.isActive = !this.isActive;
