@@ -1,0 +1,50 @@
+
+
+<div class="login-body">
+
+    <div class="ring">
+
+      <i style="--clr:#FFB6C1;"></i>
+      <i style="--clr:#87CEFA;"></i>
+      <i style="--clr:#9370DB;"></i>
+
+
+
+          <form class="login" [formGroup]="user">
+
+            <h2 id="form-title">{{formTitle}}</h2>
+
+            <div class="inputBx">
+
+                <input type="text" id="username" placeholder="Username" formControlName="username">
+
+            </div>
+
+            <div class="inputBx" id="email-box" [ngStyle]="{'display': isSignup ? 'block' : 'none'}">
+
+                <input type="email" id="email" placeholder="Email" formControlName="email">
+
+            </div>
+
+            <div class="inputBx">
+
+                <input type="password" id="password" placeholder="Password" formControlName="password">
+
+            </div>
+
+            <div class="inputBx">
+
+                <input type="submit" id="submit-btn" value="{{submitBtnText}}" (click)="submitCred()">
+
+            </div>
+
+            <div class="links">
+
+                <a (click)="toggleForm()">{{ toggleLinkText }}</a>
+
+            </div>
+          </form>
+    </div>
+
+</div>
+
