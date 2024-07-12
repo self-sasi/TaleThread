@@ -29,6 +29,10 @@ body {
   border-bottom: 1px solid #3a3a3a;
 }
 
+.head {
+  cursor: pointer;
+}
+
 .logo {
   width: 60px;
   height: 60px;

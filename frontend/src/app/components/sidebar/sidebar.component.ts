@@ -1,6 +1,6 @@
 import { NgClass } from '@angular/common';
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
@@ -15,8 +15,16 @@ export class SidebarComponent {
 
   isActive: boolean = false;
 
+  // constructor
+
+  constructor( private router : Router) {}
+
   toggleSidebar() {
     this.isActive = !this.isActive;
+  }
+
+  reload(){
+    this.router.navigateByUrl('profile')
   }
 
 }
