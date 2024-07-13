@@ -15,4 +15,8 @@ export class ProfileService {
   update(profileDetails : any){
     return this.http.post("http://127.0.0.1:8000/profile", profileDetails);
   }
+
+  logout() {
+    return this.http.post("http://127.0.0.1:8000/auth/logout", {});
+  }
 }

@@ -187,3 +187,7 @@ body {
   background-image: radial-gradient(circle, #ff6666 0%, #ff4d4d 70%, #ff3333 100%);
   transition: all 0.3s;
 }
+
+.logout {
+  cursor: pointer;
+}

@@ -13,25 +13,25 @@
   <div class="nav">
     <div class="menu">
       <ul>
-        <li class="active">
-          <a [routerLink]="['/']">
+        <li [ngClass]="{ 'active': activeButton === 'profile' }" (click)="handleActiveButton('profile')">
+          <a [routerLink]="['/profile']">
             <i class="fa-regular fa-user" style="color: #ffffff"></i>
             <span class="text">Profile</span>
           </a>
         </li>
-        <li>
+        <li [ngClass]="{ 'active': activeButton === 'threads' }" (click)="handleActiveButton('threads')">
           <a [routerLink]="['/threads']">
             <i class="fa-solid fa-magnifying-glass" style="color: #ffffff"></i>
             <span class="text">Threads</span>
           </a>
         </li>
-        <li>
+        <li [ngClass]="{ 'active': activeButton === 'create' }" (click)="handleActiveButton('create')">
           <a [routerLink]="['/create']">
             <i class="fa-solid fa-pencil" style="color: #ffffff"></i>
             <span class="text">Create</span>
           </a>
         </li>
-        <li>
+        <li [ngClass]="{ 'active': activeButton === 'saved' }" (click)="handleActiveButton('saved')">
           <a [routerLink]="['/saved']">
             <i class="fa-regular fa-folder-open" style="color: #ffffff"></i>
             <span class="text">Saved</span>
@@ -41,8 +41,8 @@
     </div>
     <div class="logout">
       <ul>
-        <li class="active">
-          <a href="#">
+        <li class="active" (click)="handleLogout()">
+          <a>
             <i class="fa-solid fa-right-from-bracket" style="color: #ffffff"></i>
             <span class="text">Logout</span>
           </a>

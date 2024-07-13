@@ -1,6 +1,7 @@
 import { NgClass } from '@angular/common';
 import { Component } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
+import { ProfileService } from '../../services/profile.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -14,10 +15,11 @@ export class SidebarComponent {
   // properties
 
   isActive: boolean = false;
+  activeButton: string = 'profile';
 
   // constructor
 
-  constructor( private router : Router) {}
+  constructor( private router : Router, private logoutService : ProfileService) {}
 
   toggleSidebar() {
     this.isActive = !this.isActive;
@@ -25,6 +27,23 @@ export class SidebarComponent {
 
   reload(){
     this.router.navigateByUrl('profile')
+  }
+
+  handleLogout() {
+    this.logoutService.logout().subscribe({
+      next : (res : any) => {
+        localStorage.removeItem('token');
+        alert(JSON.stringify(res.message));
+        this.router.navigateByUrl('login');
+      },
+      error : (err : Error) => {
+        alert(JSON.stringify(err))
+      }
+    })
+  }
+
+  handleActiveButton(btn : string) {
+    this.activeButton = btn;
   }
 
 }
