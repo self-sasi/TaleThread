@@ -1,1 +1,5 @@
-<p>threads works!</p>
+@for (thread of threads; track $index) {
+  <p>{{thread.id}}</p>
+  <p>{{thread.owner}}</p>
+  <p>{{thread.contributions}}</p>
+}
