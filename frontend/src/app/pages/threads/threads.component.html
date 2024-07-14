@@ -1,5 +1,56 @@
-@for (thread of threads; track $index) {
-  <p>{{thread.id}}</p>
-  <p>{{thread.owner}}</p>
-  <p>{{thread.contributions}}</p>
-}
+<div class="flex flex-col m-10">
+  <div class="page-title">
+    <h5 class="text-3xl mb-5 font-bold">My Threads</h5>
+  </div>
+
+  <div id="threads" class="">
+    @for (thread of threads; track $index) {
+      <hr class="mb-5 h-[1px] border-0 top-gradient">
+      <!-- add border below -->
+      <div id="thread-content" class="flex flex-row mx-auto w-[98%] items-start">
+        <img src="logos/thread_logo.svg" alt="thread_logo" class="mr-3">
+
+        <div id="thread-content-w/o-logo" class="flex w-full">
+          <div class="flex flex-col w-full">
+              <div class="flex flex-row justify-between items-center">
+                <p class="text-2xl font-bold">{{ thread.title }}</p>
+                <!-- settings, max parameters -->
+                <div class="flex flex-row w-[35%] justify-between">
+                  <div class="flex flex-row items-center">
+                    <i class="fa-solid fa-user-group mr-2"></i>
+                    <p>Max contributors: {{ thread.max_contributors }}</p>
+                  </div>
+                  <div class="flex flex-row items-center">
+                    <i class="fa-solid fa-list-ol mr-2"></i>
+                    <p>Max words per contribution: {{ thread.max_words }}</p>
+                  </div>
+                  <i class="fa-solid fa-gear text-2xl" title="Thread settings"></i>
+                </div>
+              </div>
+              <div class="flex flex-row">
+                <p class="font-semibold">{{ thread.description }}</p>
+              </div>
+              <div class="flex flex-row justify-between">
+                <!-- thread create date, update date, and # of contributions -->
+                <div id="date-data" class="flex flex-row">
+                  <p class="!text-tt-gray mr-4">Created: {{ formatDateTime(thread.created_at) }}</p>
+                  <p class="!text-tt-gray mr-4">&#x2022;</p>
+                  <p class="!text-tt-gray">Last Contribution: {{ formatDateTime(thread.updated_at) }}<p>
+                </div>
+                <p class="!text-tt-gray">{{ thread.contributions.length }} contributions</p>
+              </div>
+              <div class="mt-5">
+                <!-- contributions -->
+                @for (contribution of thread.contributions; track $index) {
+                  <span class="hover:text-green-300 cursor-pointer transition">{{contribution.content}}</span>
+                }
+              </div>
+          </div>
+        </div>
+      </div>
+      <hr class="my-5 h-[1px] border-0 bottom-gradient">
+  }
+  </div>
+
+  
+</div>

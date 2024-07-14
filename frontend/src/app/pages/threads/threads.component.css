@@ -1,3 +1,13 @@
 * {
   color: white;
+  font-weight: 600;
 }
+
+.top-gradient {
+  background: linear-gradient(to right, #212121 0%, #acacac 20%, #212121 100%);
+}
+
+.bottom-gradient {
+  background: linear-gradient(to right, #212121 0%, #acacac 80%, #212121 100%);
+}
+
