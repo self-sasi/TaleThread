@@ -1,0 +1,105 @@
+.profile-card {
+  display: flex;
+  align-items: center;
+  background: #000;
+  padding: 30px;
+  border-radius: 10px;
+  color: #fff;
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.profile-info {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.profile-picture {
+  width: 225px;
+  height: 225px;
+  border-radius: 50%;
+  background-color: #f3b26e;
+  object-fit: cover;
+  margin-right: 30px;
+}
+
+.details p {
+  margin: 5px 0;
+  padding-left: 20px;
+}
+
+.username {
+  font-weight: bold;
+  font-size: 3em;
+  background-image: linear-gradient(45deg, #87CEEB 10%, #A9D3EE 40%, #D1A8C8 70%, #F4C2C2 90%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  opacity: 1;
+}
+
+.age,
+.fav-genre {
+  font-size: 1.5em;
+}
+
+.inktokens {
+  font-size: 1.5em;
+  color: #e91e63;
+}
+
+.select-avatar {
+  font-size: 1.5em;
+}
+
+.select-box {
+  background-color: grey;
+  border: 1px white;
+}
+
+.edit-btn {
+  background-image: linear-gradient(45deg, #87CEEB 10%, #A9D3EE 40%, #D1A8C8 70%, #F4C2C2 90%);
+  color: #fff;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+  font-size: 1.5em;
+  color: black;
+}
+
+.edit-btn:hover {
+  background-image: linear-gradient(45deg, #87CEEB 10%, #A9D3EE 40%, #D1A8C8 70%, #F4C2C2 90%);
+  box-shadow: 0 0 5px #87CEEB, 0 0 5px #A9D3EE, 0 0 5px #D1A8C8, 0 0 5px #F4C2C2;
+}
+
+.update-btn {
+  background-image: linear-gradient(45deg, #FFD700 10%, #FFEA70 40%, #FFE135 70%, #FFFACD 90%);
+  color: #fff;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+  font-size: 1.5em;
+  color: black;
+}
+
+.update-btn:hover {
+  background-image: linear-gradient(45deg, #FFD700 10%, #FFEA70 40%, #FFE135 70%, #FFFACD 90%);
+  box-shadow: 0 0 5px #FFD700, 0 0 5px #FFEA70, 0 0 5px #FFE135, 0 0 5px #FFFACD;
+}
+
+
+input[type="number"],
+input[type="text"] {
+  padding: 0px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1em;
+  background-color: black;
+  color: white;
+}

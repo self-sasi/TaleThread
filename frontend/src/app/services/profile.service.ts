@@ -12,11 +12,12 @@ export class ProfileService {
     return this.http.get("http://127.0.0.1:8000/profile");
   }
 
-  update(profileDetails : any){
-    return this.http.post("http://127.0.0.1:8000/profile", profileDetails);
+  update(updatedDetails : any){
+    return this.http.put("http://127.0.0.1:8000/profile/update/", updatedDetails);
   }
 
   logout() {
     return this.http.post("http://127.0.0.1:8000/auth/logout", {});
   }
+
 }

@@ -64,7 +64,7 @@ export class LoginComponent {
       this.authenticate.login(this.user.value).subscribe({
         next: (res : any) => {
           localStorage.setItem('token', res.token);
-          this.router.navigateByUrl('profile')
+          this.router.navigateByUrl('/profile')
         },
         error: (err : any) => {
           alert(JSON.stringify(err.error.error))

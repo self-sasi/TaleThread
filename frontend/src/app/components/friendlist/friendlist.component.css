@@ -1,0 +1,97 @@
+.friends-list {
+  width: 100%;
+  max-width: 600px;
+  height: 400px; /* Fixed height */
+  margin: 0 auto;
+  padding: 20px;
+  background: #333;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  color: #fff;
+  overflow: hidden;
+}
+
+.friends-list h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.friends-list ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  max-height: calc(100% - 60px); /* Adjusted for padding and heading */
+  overflow-y: auto;
+}
+
+.friends-list li {
+  margin-bottom: 15px;
+}
+
+.friend-card {
+  display: flex;
+  align-items: center;
+  background: #444;
+  padding: 10px;
+  border-radius: 5px;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.friend-card:hover {
+  transform: translateY(-3px);
+  background: #555;
+}
+
+.friend-card img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 15px;
+}
+
+.friend-info {
+  flex-grow: 1;
+}
+
+.friend-info h3 {
+  margin: 0;
+  font-size: 1.1em;
+  color: #fff;
+}
+
+.friend-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.view-profile-btn {
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  min-width: 75px;
+}
+
+.view-profile-btn:hover {
+  background-color: #2980b9;
+}
+
+.remove-friend-btn {
+  background-color: #e74c3c;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  min-width: 75px;
+}
+
+.remove-friend-btn:hover {
+  background-color: #c0392b;
+}

@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ProfileService } from '../../services/profile.service';
+import { FriendlistComponent } from "../../components/friendlist/friendlist.component";
+import { ProfilecardComponent } from "../../components/profilecard/profilecard.component";
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [],
+  imports: [FriendlistComponent, ProfilecardComponent],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css'
 })
@@ -12,6 +14,7 @@ export class ProfileComponent implements OnInit{
 
   // properties
   userProfile : any;
+  friendsList : any;
   // constructor
 
   constructor( private profileService : ProfileService) {
@@ -23,6 +26,7 @@ export class ProfileComponent implements OnInit{
     this.profileService.get().subscribe({
       next : (res : any) => {
         this.userProfile = res;
+        this.friendsList = res.friendlist;
         console.log(this.userProfile)
       },
       error : (err : Error) => {
