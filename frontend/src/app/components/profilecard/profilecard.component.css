@@ -139,8 +139,8 @@ input[type="text"] {
 .bottom-line {
   position: relative;
   display: block;
-  width: 80%;
-  height: 4px; /* Base thickness */
+  width: 90%;
+  height: 0.8px; /* Base thickness */
   margin: 1vh auto;
   background: none;
 }
@@ -151,12 +151,11 @@ input[type="text"] {
   top: 0;
   left: 0;
   right: 0;
-  height: 100%;
-  background: linear-gradient(90deg, #ffb6c1, #87ceeb);
+  height: 70%;
+  background: #ffffff;
   border-radius: 50px;
   clip-path: polygon(0% 50%, 10% 0%, 90% 0%, 100% 50%, 90% 100%, 10% 100%);
-  animation: flow 3s infinite;
-  filter: drop-shadow(0 0 3px rgba(255, 182, 193, 0.3)) drop-shadow(0 0 3px rgba(135, 206, 235, 0.3));
+  filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.3)) drop-shadow(0 0 3px rgba(255, 255, 255, 0.3));
 }
 
 .bottom-line::after {
@@ -165,18 +164,12 @@ input[type="text"] {
   top: 0;
   left: 20%;
   right: 20%;
-  height: 3px; /* Middle thickness */
-  background: linear-gradient(90deg, #ffb6c1, #87ceeb);
+  height: 0.6px; /* Middle thickness */
+  background: #ffffff;
   border-radius: 4px;
-  animation: flow 3s infinite;
-  filter: drop-shadow(0 0 3px rgba(255, 182, 193, 0.4)) drop-shadow(0 0 3px rgba(135, 206, 235, 0.4));
+  filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.4)) drop-shadow(0 0 3px rgba(255, 255, 255, 0.4));
 }
 
-@keyframes flow {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
 
 
 

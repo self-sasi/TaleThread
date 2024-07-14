@@ -1,12 +1,12 @@
 .friends-list {
   width: 100%;
-  max-width: 600px;
+  max-width: 650px;
   height: 400px; /* Fixed height */
   margin: 0 auto;
   padding: 20px;
-  background: #333;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  background: RGBA(255, 255, 255, 0.065);
+  border-radius: 5px;
+  box-shadow: 0 8px 16px rgba(255, 255, 255, 0.1);
   color: #fff;
   overflow: hidden;
 }
@@ -23,16 +23,18 @@
   margin: 0;
   max-height: calc(100% - 60px); /* Adjusted for padding and heading */
   overflow-y: auto;
+  border: 1.5px solid RGBA(255, 255, 255, 0.075);
+  border-radius: 5px;
 }
 
 .friends-list li {
-  margin-bottom: 15px;
+  margin: 15px 25px;
 }
 
 .friend-card {
   display: flex;
   align-items: center;
-  background: #444;
+  background: RGBA(255, 255, 255, 0.075);
   padding: 10px;
   border-radius: 5px;
   transition: transform 0.3s ease, background 0.3s ease;
@@ -40,7 +42,7 @@
 
 .friend-card:hover {
   transform: translateY(-3px);
-  background: #555;
+  background:RGBA(255, 255, 255, 0.1);
 }
 
 .friend-card img {
