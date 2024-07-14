@@ -1,4 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output } from '@angular/core';
+import { Router } from '@angular/router';
+import { ElseprofileService } from '../../services/elseprofile.service';
 
 @Component({
   selector: 'app-friendlist',
@@ -10,5 +12,13 @@ import { Component, Input } from '@angular/core';
 export class FriendlistComponent {
 
   @Input() friends : any;
+  @Output() elseUsernameEmitter : any;
+
+  constructor( private router : Router, private elseProfileService : ElseprofileService) {}
+
+  setElseUsername( elseUsername : string){
+    this.elseProfileService.set(elseUsername);
+    this.router.navigateByUrl('user');
+  }
 
 }

@@ -48,7 +48,7 @@ export class LoginComponent {
         next: (res: any) => {
           if (res.token) {
             localStorage.setItem('token', res.token);
-            this.router.navigateByUrl('create');
+            this.router.navigateByUrl('/profile');
           }
           else {
             alert(res.error.username);

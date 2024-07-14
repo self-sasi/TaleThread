@@ -7,6 +7,7 @@ import { LoginComponent } from './views/login/login.component';
 import { MainComponent } from './views/main/main.component';
 import { LandingComponent } from './views/landing/landing.component';
 import { authGuard } from './guards/src/app/guards/auth.guard';
+import { ElseprofileComponent } from './pages/elseprofile/elseprofile.component';
 
 export const routes: Routes = [
   {
@@ -39,6 +40,11 @@ export const routes: Routes = [
       {
         path : 'saved',
         component : SavedComponent,
+        canActivate : [authGuard]
+      },
+      {
+        path : 'user',
+        component : ElseprofileComponent,
         canActivate : [authGuard]
       }
     ]

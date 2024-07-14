@@ -15,6 +15,7 @@ export class ProfileComponent implements OnInit{
   // properties
   userProfile : any;
   friendsList : any;
+  isNotElse : boolean = false;
   // constructor
 
   constructor( private profileService : ProfileService) {
