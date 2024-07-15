@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-// import { ThreadformComponent } from "../../components/threadform/threadform.component";
+import { ThreadformComponent } from "../../components/threadform/threadform.component";
 
 @Component({
   selector: 'app-create',
   standalone: true,
-  imports: [],
+  imports: [ThreadformComponent],
   templateUrl: './create.component.html',
   styleUrl: './create.component.css'
 })

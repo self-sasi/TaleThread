@@ -11,5 +11,9 @@ import { FloatLabelModule } from 'primeng/floatlabel';
   styleUrl: './threadform.component.css'
 })
 export class ThreadformComponent {
-  values: string[] = ["hello", "word"];
+
+  title : string = '';
+  description : string = "";
+  maxContributors : number = 0;
+  maxWordsPerContributor : number = 0;
 }
