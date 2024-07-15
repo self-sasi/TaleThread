@@ -1,84 +1,81 @@
+@if (!isElse) {
 
+<div class="profile-card">
+  <div class="profile-info">
+    <img
+      [src]="'dp/' + profile.avatar + '.jpg'"
+      alt="Profile picture"
+      class="profile-picture"
+    />
 
-  @if (!isElse) {
+    <div class="details">
+      <p class="username">{{ profile.user.username }}</p>
+      @if (isEditing) {
+      <p class="age" style="color: yellow !important">
+        age: <input [(ngModel)]="newAge" type="number" />
+      </p>
+      <p class="fav-genre" style="color: yellow !important">
+        fav genres: <input [(ngModel)]="newFavGenre" type="text" />
+      </p>
+      <p class="select-avatar" style="color: yellow !important">
+        avatar :
+        <select class="select-box" [(ngModel)]="newAvatar">
+          <option value="black">black</option>
+          <option value="blue">blue</option>
+          <option value="brown">brown</option>
+          <option value="green">green</option>
+          <option value="orange">orange</option>
+          <option value="pink">pink</option>
+          <option value="red">red</option>
+          <option value="violet">violet</option>
+          <option value="white">white</option>
+          <option value="yellow">yellow</option>
+        </select>
+      </p>
+      } @else{
+      <p class="age">age : {{ profile.age }}</p>
+      <p class="fav-genre">fav genres : {{ profile.fav_genre }}</p>
+      } @if(!isElse) {
+      <p class="inktokens">inktokens : {{ profile.inktokens }}</p>
+      }
 
-  <div class="profile-card">
-    <div class="profile-info">
-
-      <img [src]="'dp/' + profile.avatar + '.jpg'" alt="Profile picture" class="profile-picture" />
-
-
-      <div class="details">
-
-        <p class="username">{{profile.user.username}}</p>
-        @if (isEditing) {
-          <p class="age" style="color: yellow !important;">age: <input [(ngModel)]="newAge" type="number" /></p>
-          <p class="fav-genre" style="color: yellow !important;">fav genres: <input [(ngModel)]="newFavGenre" type="text" /></p>
-          <p class="select-avatar" style="color: yellow !important;">avatar :
-            <select class="select-box" [(ngModel)]="newAvatar">
-              <option value="black">black</option>
-              <option value="blue">blue</option>
-              <option value="brown">brown</option>
-              <option value="green">green</option>
-              <option value="orange">orange</option>
-              <option value="pink">pink</option>
-              <option value="red">red</option>
-              <option value="violet">violet</option>
-              <option value="white">white</option>
-              <option value="yellow">yellow</option>
-            </select> </p>
-        }
-        @else{
-          <p class="age">age : {{profile.age}}</p>
-          <p class="fav-genre">fav genres : {{profile.fav_genre}}</p>
-        }
-
-        @if(!isElse) {
-          <p class="inktokens">inktokens : {{profile.inktokens}}</p>
-        }
-
-        <!-- [ngStyle]="{'color' : profile.avatar == 'black' ? 'grey' : profile.avatar}" -->
-
-      </div>
-
-
-    </div>
-
-    @if(isEditing) {
-      <button class="update-btn" (click)="toggleEditMode(); updateChanges()"> <i class="fa-regular fa-circle-check"></i> Update</button>
-    }
-    @else {
-      <button class="edit-btn" (click)="toggleEditMode()"> <i class="fa-solid fa-pen-to-square"></i> Edit </button>
-    }
-
-  </div>
-  <div class="bottom-line">
-
-  </div>
-  }
-
-  @else {
-
-    <div class="else-profile-card">
-
-    <div class="else-profile-info">
-
-      <div class="image-container">
-      <img [src]="'dp/' + profile.avatar + '.jpg'" alt="Profile picture" class="profile-picture" />
-      </div>
-
-      <div class="else-details">
-
-        <p class="username">{{profile.user.username}}</p>
-
-          <p class="age">age : {{profile.age}}</p>
-          <p class="fav-genre">fav genres : {{profile.fav_genre}}</p>
-
-      </div>
-
+      <!-- [ngStyle]="{'color' : profile.avatar == 'black' ? 'grey' : profile.avatar}" -->
     </div>
   </div>
+
+  @if(isEditing) {
+  <button class="update-btn" (click)="toggleEditMode(); updateChanges()">
+    <i class="fa-regular fa-circle-check"></i> Update
+  </button>
+  } @else {
+  <button class="edit-btn" (click)="toggleEditMode()">
+    <i class="fa-solid fa-pen-to-square"></i> Edit
+  </button>
   }
+</div>
+<div class="bottom-line"></div>
+} @else {
 
+<div class="else-profile-card">
+  <div class="else-profile-info">
+    <div class="image-container">
+      <img
+        [src]="'dp/' + profile.avatar + '.jpg'"
+        alt="Profile picture"
+        class="profile-picture"
+      />
+    </div>
 
+    <div class="else-details">
+      <p class="username">{{ profile.user.username }}</p>
 
+      <p class="age">age : {{ profile.age }}</p>
+      <p class="fav-genre">fav genres : {{ profile.fav_genre }}</p>
+    </div>
+    <div class="button">
+      <button class="remove-friend-btn" (click)="removeFriend(profile.user.username)">Remove Friend</button>
+      <!-- <button class="add-friend-btn">Add Friend</button> -->
+    </div>
+  </div>
+</div>
+}

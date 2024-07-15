@@ -2,6 +2,8 @@ import { Component, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ProfileService } from '../../services/profile.service';
 import { CommonModule } from '@angular/common';
+import { FriendService } from '../../services/friend.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profilecard',
@@ -23,7 +25,7 @@ export class ProfilecardComponent {
 
   // constructor
 
-  constructor(private profileService : ProfileService) {
+  constructor(private profileService : ProfileService, private friendService : FriendService, private router : Router) {
 
   }
 
@@ -49,6 +51,22 @@ export class ProfilecardComponent {
         alert(JSON.stringify(err))
       }
     })
+  }
+
+  removeFriend( username : string) {
+    const removalConfirmed = confirm(`Are you sure you want to remove ${username} from your friends?`);
+
+    if (removalConfirmed) {
+      this.friendService.remove(username).subscribe({
+        next : (res : any) => {
+          console.log("removed");
+          this.router.navigateByUrl('profile')
+        },
+        error : (err : Error) => {
+          alert(err);
+        }
+      })
+    }
   }
 
 }

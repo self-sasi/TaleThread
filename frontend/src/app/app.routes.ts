@@ -28,13 +28,13 @@ export const routes: Routes = [
         canActivate : [authGuard]
       },
       {
-        path : 'create',
-        component : CreateComponent,
+        path : 'threads',
+        component : ThreadsComponent,
         canActivate : [authGuard]
       },
       {
-        path : 'threads',
-        component : ThreadsComponent,
+        path : 'create',
+        component : CreateComponent,
         canActivate : [authGuard]
       },
       {

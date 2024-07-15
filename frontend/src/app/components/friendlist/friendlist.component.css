@@ -21,7 +21,7 @@
   list-style-type: none;
   padding: 0;
   margin: 0;
-  max-height: calc(100% - 60px); /* Adjusted for padding and heading */
+  height: calc(100% - 60px); /* Adjusted for padding and heading */
   overflow-y: auto;
   border: 1.5px solid RGBA(255, 255, 255, 0.075);
   border-radius: 5px;

@@ -10,7 +10,7 @@
           </div>
           <div class="friend-actions">
             <button class="view-profile-btn" (click)="setElseUsername(friend.username)">Profile</button>
-            <button class="remove-friend-btn">Remove</button>
+            <button class="remove-friend-btn" (click)="removeFriend(friend.username)">Remove</button>
           </div>
         </div>
       </li>

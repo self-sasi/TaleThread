@@ -170,6 +170,140 @@ input[type="text"] {
   filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.4)) drop-shadow(0 0 3px rgba(255, 255, 255, 0.4));
 }
 
+.button {
+  margin-top: 4vh;
+}
+/* Button Style */
+.remove-friend-btn {
+  background: linear-gradient(135deg, #ff416c, #ff4d4d); /* Gradient background */
+  color: white; /* White text */
+  border: none; /* Remove default border */
+  padding: 12px 36px; /* Padding for the button */
+  font-size: 16px; /* Font size */
+  font-weight: bold; /* Bold text */
+  cursor: pointer; /* Pointer cursor on hover */
+  border-radius: 50px; /* Fully rounded corners */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  transition: all 0.3s ease; /* Smooth transition for all effects */
+  position: relative; /* Positioning for pseudo-elements */
+  overflow: hidden; /* Hide overflow for pseudo-elements */
+  z-index: 1; /* Ensure the button content is above pseudo-elements */
+}
+
+/* Pseudo-elements for subtle shine effect */
+.remove-friend-btn::before {
+  content: '';
+  position: absolute;
+  top: -50px;
+  left: -100px;
+  width: 200px;
+  height: 200px;
+  background: rgba(255, 255, 255, 0.2);
+  transform: rotate(45deg);
+  transition: all 0.5s ease;
+  z-index: 0; /* Ensure pseudo-element is behind the button content */
+  pointer-events: none; /* Ignore mouse events */
+}
+
+/* Keyframes for shine animation */
+@keyframes shine {
+  0% {
+    top: -50px;
+    left: -100px;
+  }
+  50% {
+    top: 100%;
+    left: 100%;
+  }
+  100% {
+    top: -50px;
+    left: -100px;
+  }
+}
+
+/* Hover Effect */
+.remove-friend-btn:hover {
+  background: linear-gradient(135deg, #ff4d4d, #ff416c); /* Reverse gradient on hover */
+  transform: translateY(-3px); /* Slightly raise button */
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15); /* Deeper shadow on hover */
+}
+
+.remove-friend-btn:active {
+  transform: translateY(-1px); /* Slightly lower button on click */
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.1); /* Slightly reduced shadow on click */
+}
+
+.remove-friend-btn:hover::before {
+  animation: shine 1s ease-in-out;
+}
+
+/* Button Style */
+.add-friend-btn {
+  background: linear-gradient(135deg, #28a745, #218838); /* Gradient background */
+  color: white; /* White text */
+  border: none; /* Remove default border */
+  padding: 12px 36px; /* Padding for the button */
+  font-size: 16px; /* Font size */
+  font-weight: bold; /* Bold text */
+  cursor: pointer; /* Pointer cursor on hover */
+  border-radius: 50px; /* Fully rounded corners */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  transition: all 0.3s ease; /* Smooth transition for all effects */
+  position: relative; /* Positioning for pseudo-elements */
+  overflow: hidden; /* Hide overflow for pseudo-elements */
+  z-index: 1; /* Ensure the button content is above pseudo-elements */
+}
+
+/* Pseudo-elements for subtle shine effect */
+.add-friend-btn::before {
+  content: '';
+  position: absolute;
+  top: -50px;
+  left: -100px;
+  width: 200px;
+  height: 200px;
+  background: rgba(255, 255, 255, 0.2);
+  transform: rotate(45deg);
+  transition: all 0.5s ease;
+  z-index: 0; /* Ensure pseudo-element is behind the button content */
+  pointer-events: none; /* Ignore mouse events */
+}
+
+/* Keyframes for shine animation */
+@keyframes shine {
+  0% {
+    top: -50px;
+    left: -100px;
+  }
+  50% {
+    top: 100%;
+    left: 100%;
+  }
+  100% {
+    top: -50px;
+    left: -100px;
+  }
+}
+
+/* Hover Effect */
+.add-friend-btn:hover {
+  background: linear-gradient(135deg, #218838, #28a745); /* Reverse gradient on hover */
+  transform: translateY(-3px); /* Slightly raise button */
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15); /* Deeper shadow on hover */
+}
+
+.add-friend-btn:active {
+  transform: translateY(-1px); /* Slightly lower button on click */
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.1); /* Slightly reduced shadow on click */
+}
+
+.add-friend-btn:hover::before {
+  animation: shine 1s ease-in-out;
+}
+
+
+
+
 
 
 

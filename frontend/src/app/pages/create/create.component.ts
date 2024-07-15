@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+// import { ThreadformComponent } from "../../components/threadform/threadform.component";
 
 @Component({
   selector: 'app-create',
