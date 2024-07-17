@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ThreadformComponent } from "../../components/threadform/threadform.component";
+import { ThreadsService } from '../../services/threads.service';
 
 @Component({
   selector: 'app-create',
@@ -10,4 +11,16 @@ import { ThreadformComponent } from "../../components/threadform/threadform.comp
 })
 export class CreateComponent {
 
+  constructor( private threadsService : ThreadsService) {}
+
+  handleThreadSpecificationsEmitter( threadSpecifications : any) {
+    this.threadsService.post(threadSpecifications).subscribe({
+      next : (res : any) => {
+        alert('success');
+      },
+      error : (err : Error) => {
+        alert(err);
+      }
+    })
+  }
 }

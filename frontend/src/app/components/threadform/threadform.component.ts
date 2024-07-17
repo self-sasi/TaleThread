@@ -1,19 +1,25 @@
-import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { ChipsModule } from 'primeng/chips';
-import { FloatLabelModule } from 'primeng/floatlabel';
+import { Component, Output, EventEmitter } from '@angular/core';
+import { Form, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-threadform',
   standalone: true,
-  imports: [FormsModule, ChipsModule, FloatLabelModule],
+  imports: [ReactiveFormsModule],
   templateUrl: './threadform.component.html',
   styleUrl: './threadform.component.css'
 })
 export class ThreadformComponent {
 
-  title : string = '';
-  description : string = "";
-  maxContributors : number = 0;
-  maxWordsPerContributor : number = 0;
+  @Output() threadSpecificationsEmitter = new EventEmitter<FormGroup>();
+
+  threadSpecifications : FormGroup = new FormGroup({
+    title : new FormControl(''),
+    maxContributors : new FormControl(''),
+    maxWords : new FormControl(''),
+    description : new FormControl('')
+  })
+
+  onPost() {
+    this.threadSpecificationsEmitter.emit(this.threadSpecifications.value);
+  }
 }
