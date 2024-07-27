@@ -18,6 +18,7 @@ export class ProfilecardComponent {
 
   @Input() profile? : any;
   @Input() isElse : boolean = false;
+  @Input() isFriend : boolean = false;
   isEditing = false;
   newAge?: number;
   newFavGenre?: string;
