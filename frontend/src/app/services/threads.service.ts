@@ -11,4 +11,8 @@ export class ThreadsService {
   get(threadId : string = '') {
     return this.http.get(`http://127.0.0.1:8000/threads/`);
   }
+
+  post( threadSpecifications : any) {
+    return this.http.post(`http://127.0.0.1:8000/threads/`, threadSpecifications);
+  }
 }

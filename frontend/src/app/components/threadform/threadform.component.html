@@ -1,0 +1,30 @@
+<div class="e-card playing">
+
+  <div class="form-container">
+    <h2>Create Thread</h2>
+    <form [formGroup]="threadSpecifications" (ngSubmit)="onPost()">
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" id="title" name="title" placeholder="Title" formControlName="title">
+      </div>
+      <div class="form-group">
+        <label for="maxContributors">Maximum Contributors <i class="fa-solid fa-circle-info"></i></label>
+        <input type="number" id="maxContributors" name="maxContributors" placeholder="Maximum Contributors" formControlName="maxContributors">
+      </div>
+      <div class="form-group">
+        <label for="maxWords">Maximum Words per Contributor <i class="fa-solid fa-circle-info"></i></label>
+        <input type="number" id="maxWords" name="maxWords" placeholder="Maximum Words per Contributor" formControlName="maxWords">
+      </div>
+      <div class="form-group">
+        <label for="description">Thread Description</label>
+        <textarea id="description" name="description" placeholder="Thread Description" formControlName="description"></textarea>
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <div class="wave"></div>
+  <div class="wave"></div>
+  <div class="wave"></div>
+
+</div>
