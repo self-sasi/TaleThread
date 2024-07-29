@@ -11,10 +11,33 @@
   overflow: hidden;
 }
 
-.friends-list h2 {
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.friends-list .heading {
   text-align: center;
   margin-bottom: 20px;
+  padding: 10px;
   color: #fff;
+  width: 275px;
+  display: inline-block;
+  font-size: x-large;
+  background-color: transparent;
+  border: 1.5px solid transparent;
+  border-radius: 20px 20px;
+  transition: 0.2s ease-in-out;
+}
+
+.heading:hover {
+  border: 1.5px solid RGBA(255, 255, 255, 0.075) !important;
+  cursor: pointer;
+}
+
+.selected {
+  border: 1.5px solid RGBA(255, 255, 255, 0.075) !important;
+  cursor: pointer;
 }
 
 .friends-list ul {
@@ -81,6 +104,21 @@
 
 .view-profile-btn:hover {
   background-color: #2980b9;
+}
+
+.accept-request-btn {
+  background-color: #32CD32;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  min-width: 75px;
+}
+
+.accept-request-btn:hover {
+  background-color: #3CB371;
 }
 
 .remove-friend-btn {

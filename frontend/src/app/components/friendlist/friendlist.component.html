@@ -1,19 +1,49 @@
 <div class="friends-list">
-  <h2>Friends List</h2>
-  <ul>
-    @for (friend of friends; track $index) {
-      <li>
-        <div class="friend-card">
-          <img src="https://via.placeholder.com/50" alt="John Doe's profile picture" />
-          <div class="friend-info">
-            <h3>{{friend.username}}</h3>
+  <div class="header">
+    <button class="heading" [ngClass]="{'selected': isFriendsList}" (click)="toggleList()">Friends List</button>
+    <button class="heading" [ngClass]="{'selected' : !isFriendsList}" (click)="toggleList()">Incoming Requests
+      @if (incomingRequests.length > 0) {
+        <i class="fa-solid fa-circle-exclamation" style="color: #FFB6C1; margin-left: 4px;"></i>
+      }
+    </button>
+  </div>
+
+  @if (isFriendsList) {
+    <ul>
+      @for (friend of friends; track $index) {
+        <li>
+          <div class="friend-card">
+            <img src="https://via.placeholder.com/50" alt="John Doe's profile picture" />
+            <div class="friend-info">
+              <h3>{{friend.username}}</h3>
+            </div>
+            <div class="friend-actions">
+              <button class="view-profile-btn" (click)="setElseUsername(friend.username)">Profile</button>
+              <button class="remove-friend-btn" (click)="removeFriend(friend.username)">Remove</button>
+            </div>
           </div>
-          <div class="friend-actions">
-            <button class="view-profile-btn" (click)="setElseUsername(friend.username)">Profile</button>
-            <button class="remove-friend-btn" (click)="removeFriend(friend.username)">Remove</button>
+        </li>
+      }
+    </ul>
+  }
+  @else {
+    <ul>
+      @for (request of incomingRequests; track $index) {
+        <li>
+          <div class="friend-card">
+            <img src="https://via.placeholder.com/50" alt="John Doe's profile picture" />
+            <div class="friend-info">
+              <h3>{{request.username}}</h3>
+            </div>
+            <div class="friend-actions">
+              <button class="view-profile-btn" (click)="setElseUsername(request.username)">Profile</button>
+              <button class="accept-request-btn" (click)="acceptRequest(request.username)">Accept</button>
+              <button class="remove-friend-btn" (click)="rejectRequest(request.username)">Reject</button>
+            </div>
           </div>
-        </div>
-      </li>
-    }
-  </ul>
+        </li>
+      }
+    </ul>
+  }
+
 </div>
