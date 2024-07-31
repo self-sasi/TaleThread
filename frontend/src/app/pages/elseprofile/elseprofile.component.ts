@@ -43,7 +43,7 @@ export class ElseprofileComponent implements OnInit{
   checkFriendStatus() {
     if (this.currUser && this.elseUserProfile) {
       for (let friend of this.currUser.friendlist) {
-        if (friend.username === this.elseUserProfile.user.username) {
+        if (friend.user.username === this.elseUserProfile.user.username) {
           this.isFriend = true;
           break;
         }
