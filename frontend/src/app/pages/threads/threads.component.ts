@@ -1,36 +1,42 @@
 import { Component, OnInit } from '@angular/core';
 import { ThreadsService } from '../../services/threads.service';
+import { ContributionTooltipComponent } from './contribution-tooltip.component';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-threads',
   standalone: true,
-  imports: [],
+  imports: [ContributionTooltipComponent, NgIf],
   templateUrl: './threads.component.html',
   styleUrl: './threads.component.css'
 })
 export class ThreadsComponent implements OnInit{
 
   threads : any;
+  showTooltip: boolean = false;
 
   constructor ( private threadsService : ThreadsService) {
 
   }
 
   ngOnInit(): void {
-      this.getThreads('1')
+    this.getThreads('1')
   }
 
   getThreads(threadId? : any) {
     this.threadsService.get(threadId).subscribe({
       next : (res : any) => {
         this.threads = res;
-        console.log(this.threads)
       },
       error : (err : Error) => {
         alert(JSON.stringify(err))
       }
     })
+  }
 
+  logContent(contribution: any) {
+    console.log(contribution);
+    this.showTooltip = true;
   }
 
   formatDateTime(dateTimeString: string): string {

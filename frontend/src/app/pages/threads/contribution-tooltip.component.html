@@ -1,0 +1,19 @@
+<div class="flex flex-col gap-3 w-fit bg-[#2b2b2b] rounded-2xl px-4 py-3">
+    <div class="flex flex-row justify-between gap-10">
+        <span>Author: &#64;{{ author }}</span>
+        <span class="text-tt-gray">{{ formatDateTime() }}</span>
+    </div>
+    <div class="flex flex-row justify-between">
+        <div class="flex flex-row gap-3">
+            <div class="flex flex-row gap-1">
+                <img src="icons/thumbs_up.svg" alt="thread_logo" class="">
+                <span class="text-[#6CFF60]">{{ likes }}</span>
+            </div>
+            <div class="flex flex-row gap-1">
+                <img src="icons/thumbs_down.svg" alt="thread_logo" class="">
+                <span class="text-[#FF4848]">{{ dislikes }}</span>
+            </div>
+        </div>
+        <img src="logos/contribution_logo.svg" alt="contribution_logo" class="">
+    </div>
+</div>
