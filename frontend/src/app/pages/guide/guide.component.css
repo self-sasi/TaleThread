@@ -1,0 +1,124 @@
+body {
+  background-color: transparent;
+  color: white;
+}
+
+.guide-container {
+  margin: 3vh 5vw;
+  margin-right: 0;
+  padding: 20px;
+}
+
+.box {
+  width: 100%;
+  overflow: auto;
+  margin-top: 17.5vh;
+  margin-bottom: 15vh;
+  margin-right: 0;
+}
+
+.intro, .instructors, .end-message {
+  opacity: 0;
+  animation: fadeIn 1s forwards;
+}
+
+.heading h1 {
+  text-align: left;
+  font-size: 3.5em;
+  background-image: linear-gradient(45deg, #87CEEB 10%, #A9D3EE 20%, #D1A8C8 50%, #F4C2C2 60%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  opacity: 1;
+}
+
+h2 {
+  font-size: 2.5em;
+}
+
+.part-1, .part-2, .part-3, .part-4, .part-5, .instruct-1, .instruct-2, .instruct-3 {
+  width: 60%;
+  padding-right: 5vw;
+}
+
+.part-1, .part-3, .part-5, .instruct-1, .instruct-3 {
+  float: left;
+}
+
+.part-2,  .part-4, .instruct-2 {
+  float: right;
+}
+
+.end-message {
+  text-align: center;
+  font-size: 1.2em;
+  margin-top: 50px;
+  clear: both; /* Clear floats */
+  width: 100%;
+}
+
+/* Animation for fade-in effect */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Specific animations for different parts */
+.intro .part-1 { animation-delay: 0.5s; }
+.intro .part-2 { animation-delay: 1s; }
+.intro .part-3 { animation-delay: 1.5s; }
+.intro .part-4 { animation-delay: 2s; }
+.intro .part-5 { animation-delay: 2.5s; }
+
+.instructors .instruct-1 { animation-delay: 3s; }
+.instructors .instruct-2 { animation-delay: 3.5s; }
+.instructors .instruct-3 { animation-delay: 4s; }
+
+.end-message { animation-delay: 4.5s; }
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 10px;
+
+}
+
+p, ul {
+  font-size: 1.75em;
+  line-height: 1.6;
+}
+
+p {
+  margin-top: 2vh;
+}
+
+.pic-1 {
+  animation: slideInFromRight 1s forwards;
+}
+
+.pic {
+  display: inline;
+  margin: 0;
+}
+
+.pic2 {
+  border-radius: 10px;
+}
+
+.pic4 {
+  border-radius: 50%;
+}
+
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

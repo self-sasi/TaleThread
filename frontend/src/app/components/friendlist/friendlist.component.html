@@ -47,3 +47,53 @@
   }
 
 </div>
+
+<div class="friends-list">
+  <div class="header">
+    <button class="heading" [ngClass]="{'selected': isFriendsList}" (click)="toggleList()">Friends List</button>
+    <button class="heading" [ngClass]="{'selected' : !isFriendsList}" (click)="toggleList()">Incoming Requests
+      @if (incomingRequests.length > 0) {
+        <i class="fa-solid fa-circle-exclamation" style="color: #FFB6C1; margin-left: 4px;"></i>
+      }
+    </button>
+  </div>
+
+  @if (isFriendsList) {
+    <ul>
+      @for (friend of friends; track $index) {
+        <li>
+          <div class="friend-card">
+            <img [src]="'dp/' + friend.avatar + '.jpg'" alt="DP" />
+            <div class="friend-info">
+              <h3>{{friend.user.username}}</h3>
+            </div>
+            <div class="friend-actions">
+              <button class="view-profile-btn" (click)="setElseUsername(friend.user.username)">Profile</button>
+              <button class="remove-friend-btn" (click)="removeFriend(friend.user.username)">Remove</button>
+            </div>
+          </div>
+        </li>
+      }
+    </ul>
+  }
+  @else {
+    <ul>
+      @for (request of incomingRequests; track $index) {
+        <li>
+          <div class="friend-card">
+            <img [src]="'dp/' + request.avatar + '.jpg'" alt="DP" />
+            <div class="friend-info">
+              <h3>{{request.user.username}}</h3>
+            </div>
+            <div class="friend-actions">
+              <button class="view-profile-btn" (click)="setElseUsername(request.user.username)">Profile</button>
+              <button class="accept-request-btn" (click)="acceptRequest(request.user.username)">Accept</button>
+              <button class="remove-friend-btn" (click)="rejectRequest(request.user.username)">Reject</button>
+            </div>
+          </div>
+        </li>
+      }
+    </ul>
+  }
+
+</div>
