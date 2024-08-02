@@ -37,6 +37,12 @@
             <span class="text">Saved</span>
           </a>
         </li>
+        <li [ngClass]="{ 'active': activeButton === 'guide' }" (click)="handleActiveButton('guide')">
+          <a [routerLink]="['/guide']">
+            <i class="fa-solid fa-book" style="color: #ffffff;"></i>
+            <span class="text">Guide</span>
+          </a>
+        </li>
       </ul>
     </div>
     <div class="logout">
