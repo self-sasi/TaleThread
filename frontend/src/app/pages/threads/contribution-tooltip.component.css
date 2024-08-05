@@ -4,9 +4,10 @@
 
 .tooltip {
     animation: fadeIn 0.25s forwards;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+    /* position: absolute; */
+    /* margin: auto; */
+    /* left: 50%;
+    transform: translateX(-50%); */
     white-space: nowrap;
     z-index: 1000; /* Ensures tooltip appears above other content */
     
@@ -26,7 +27,7 @@
 }
 
 /* Box shadow pseudoelement */
-.box::after {
+/* .box::after {
     content: '';
     position: absolute;
     left: 0;
@@ -45,7 +46,7 @@
         #D1A8C8 70%,
         #F4C2C2 90%);
     z-index: -1;
-}
+} */
 
 @keyframes fadeIn {
     0% {

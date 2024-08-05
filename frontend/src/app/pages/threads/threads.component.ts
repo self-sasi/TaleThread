@@ -50,7 +50,6 @@ export class ThreadsComponent implements OnInit{
 
   pinTooltip(contribution: any) {
     this.pinnedTooltip = contribution.id;
-    console.log(this.pinnedTooltip);
   }
 
   trackById(index: number, item: any): string {

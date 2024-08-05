@@ -1,6 +1,6 @@
 <div class="flex flex-col m-10">
   <div class="page-title">
-    <h5 class="text-3xl mb-5 font-bold">My Threads</h5>
+    <h5 class="text-3xl mb-5 font-bold">Threads</h5>
   </div>
 
   <div id="threads" class="">
@@ -42,6 +42,7 @@
               <div class="mt-5 contributions-container">
                 <!-- contributions -->
                 <div *ngFor="let contribution of thread.contributions; trackBy: trackById" class="contribution-item">
+
                   <span class="hover:text-green-300 cursor-pointer transition" 
                     (mouseenter)="showTooltip(contribution)" 
                     (mouseleave)="hideTooltip(contribution)"
@@ -50,6 +51,7 @@
                   </span>
                   <app-contribution-tooltip 
                     *ngIf="tooltipVisibleMap[contribution.id]" 
+                    class="thread-tooltip"
                     [author]="contribution.user" 
                     [contributionDateTime]="contribution.updated_at" 
                     [parentFormatFunction]="formatDateTime" 

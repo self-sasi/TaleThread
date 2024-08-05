@@ -12,10 +12,21 @@
 }
 
 .contributions-container {
-  display: flex;
-  flex-wrap: wrap; 
+  /* display: flex;
+  flex-wrap: wrap;  */
 }
 
 .contribution-item {
+  display: inline;
   position: relative;
+  /* border: red solid; */
+}
+
+.thread-tooltip {
+  /* border: green solid; */
+  position: absolute;
+  z-index: 1000;
+  /* margin: auto; */
+  left: 50%;
+  transform: translateX(-50%);
 }
