@@ -39,12 +39,27 @@
                 </div>
                 <p class="!text-tt-gray">{{ thread.contributions.length }} contributions</p>
               </div>
-              <div class="mt-5">
+              <div class="mt-5 contributions-container">
                 <!-- contributions -->
-                @for (contribution of thread.contributions; track $index) {
-                  <span class="hover:text-green-300 cursor-pointer transition" (mouseenter)="logContent(contribution)">{{contribution.content}}</span>
-                  <app-contribution-tooltip *ngIf="showTooltip" [author]="contribution.user" [contributionDateTime]="contribution.updated_at" [parentFormatFunction]="formatDateTime" [likes]="contribution.upvotes" [dislikes]="contribution.downvotes"></app-contribution-tooltip>
-                }
+                <div *ngFor="let contribution of thread.contributions; trackBy: trackById" class="contribution-item">
+                  <span class="hover:text-green-300 cursor-pointer transition" 
+                    (mouseenter)="showTooltip(contribution)" 
+                    (mouseleave)="hideTooltip(contribution)"
+                    (click)="pinTooltip(contribution)">
+                    {{contribution.content}}
+                  </span>
+                  <app-contribution-tooltip 
+                    *ngIf="tooltipVisibleMap[contribution.id]" 
+                    [author]="contribution.user" 
+                    [contributionDateTime]="contribution.updated_at" 
+                    [parentFormatFunction]="formatDateTime" 
+                    [likes]="contribution.upvotes" 
+                    [dislikes]="contribution.downvotes"
+                    [contribution_id]="contribution.id"
+                    [thread_id]="contribution.thread"
+                    [tooltipVisibleMap]="tooltipVisibleMap">
+                  </app-contribution-tooltip>
+                </div>
               </div>
           </div>
         </div>

@@ -11,3 +11,11 @@
   background: linear-gradient(to right, #212121 0%, #acacac 80%, #212121 100%);
 }
 
+.contributions-container {
+  display: flex;
+  flex-wrap: wrap; 
+}
+
+.contribution-item {
+  position: relative;
+}

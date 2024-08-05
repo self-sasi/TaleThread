@@ -1,26 +1,30 @@
 import { Component, OnInit } from '@angular/core';
 import { ThreadsService } from '../../services/threads.service';
 import { ContributionTooltipComponent } from './contribution-tooltip.component';
-import { NgIf } from '@angular/common';
+import { NgIf, NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-threads',
   standalone: true,
-  imports: [ContributionTooltipComponent, NgIf],
+  imports: [ContributionTooltipComponent, NgIf, NgFor],
   templateUrl: './threads.component.html',
   styleUrl: './threads.component.css'
 })
 export class ThreadsComponent implements OnInit{
 
   threads : any;
-  showTooltip: boolean = false;
+  tooltipVisibleMap: { [key: string]: boolean } = {};
+  tooltipVisible: boolean | undefined;
+
+  pinnedTooltip: number | undefined;
 
   constructor ( private threadsService : ThreadsService) {
 
   }
 
   ngOnInit(): void {
-    this.getThreads('1')
+    this.getThreads('1');
+    this.tooltipVisible = false;
   }
 
   getThreads(threadId? : any) {
@@ -34,9 +38,23 @@ export class ThreadsComponent implements OnInit{
     })
   }
 
-  logContent(contribution: any) {
-    console.log(contribution);
-    this.showTooltip = true;
+  showTooltip(contribution: any) {
+    this.tooltipVisibleMap[contribution.id] = true;
+  }
+
+  hideTooltip(contribution: any) {
+    if (contribution.id !== this.pinnedTooltip) {
+      this.tooltipVisibleMap[contribution.id] = false;
+    }
+  }
+
+  pinTooltip(contribution: any) {
+    this.pinnedTooltip = contribution.id;
+    console.log(this.pinnedTooltip);
+  }
+
+  trackById(index: number, item: any): string {
+    return item.id;
   }
 
   formatDateTime(dateTimeString: string): string {
