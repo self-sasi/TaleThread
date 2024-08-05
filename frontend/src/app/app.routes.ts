@@ -7,6 +7,8 @@ import { LoginComponent } from './views/login/login.component';
 import { MainComponent } from './views/main/main.component';
 import { LandingComponent } from './views/landing/landing.component';
 import { authGuard } from './guards/src/app/guards/auth.guard';
+import { ElseprofileComponent } from './pages/elseprofile/elseprofile.component';
+import { GuideComponent } from './pages/guide/guide.component';
 
 export const routes: Routes = [
   {
@@ -27,18 +29,28 @@ export const routes: Routes = [
         canActivate : [authGuard]
       },
       {
-        path : 'create',
-        component : CreateComponent,
-        canActivate : [authGuard]
-      },
-      {
         path : 'threads',
         component : ThreadsComponent,
         canActivate : [authGuard]
       },
       {
+        path : 'create',
+        component : CreateComponent,
+        canActivate : [authGuard]
+      },
+      {
         path : 'saved',
         component : SavedComponent,
+        canActivate : [authGuard]
+      },
+      {
+        path : 'user',
+        component : ElseprofileComponent,
+        canActivate : [authGuard]
+      },
+      {
+        path : 'guide',
+        component : GuideComponent,
         canActivate : [authGuard]
       }
     ]

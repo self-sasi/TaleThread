@@ -15,6 +15,8 @@ export class ProfileComponent implements OnInit{
   // properties
   userProfile : any;
   friendsList : any;
+  incomingRequests : any;
+  isNotElse : boolean = false;
   // constructor
 
   constructor( private profileService : ProfileService) {
@@ -27,6 +29,7 @@ export class ProfileComponent implements OnInit{
       next : (res : any) => {
         this.userProfile = res;
         this.friendsList = res.friendlist;
+        this.incomingRequests = res.friend_requests_received;
         console.log(this.userProfile)
       },
       error : (err : Error) => {

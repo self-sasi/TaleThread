@@ -1,214 +1,291 @@
-@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap");
-
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Quicksand", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Quicksand", sans-serif;
+}
+
+body, html {
+  height: 100%;
+  overflow: hidden;
 }
 
 .landing-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background: black;
-    color: #fff;
-    overflow: hidden;
-    padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: black;
+  color: #fff;
+  overflow: hidden;
+  width: 100vw;
+  padding: 20px;
+  position: relative; /* Add this to make sure absolute positioned elements are within this container */
 }
 
 .content {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 80%;
-    max-width: 1200px;
-    background: transparent;
-    border-radius: 15px;
-    padding: 40px;
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 1s ease forwards;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 80%;
+  max-width: 1200px;
+  background: transparent;
+  border-radius: 15px;
+  padding: 40px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s ease forwards;
+  z-index: 1;
 }
 
 .text {
-    margin-bottom: 30px;
+  margin-bottom: 30px;
 }
 
 .text h1 {
-    font-size: 4em;
-    font-weight: 500;
-    margin-bottom: 10px;
-    background: linear-gradient(270deg, #ff00ff, #00ffff, #66ff66, #ff00ff);
-    background-size: 200% 200%;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: gradient-flow 15s ease infinite;
+  font-size: 4em;
+  font-weight: 500;
+  margin-bottom: 10px;
+  background: linear-gradient(270deg, #ff00ff, #00ffff, #66ff66, #ff00ff);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-flow 15s ease infinite;
 }
 
 .text h2 {
-    font-size: 1.5em;
-    margin-bottom: 20px;
-    color: rgba(255, 255, 255, 0.75);
+  font-size: 1.5em;
+  margin-bottom: 20px;
+  color: rgba(255, 255, 255, 0.75);
 }
 
 .text p {
-    margin-bottom: 30px;
-    font-size: 1.2em;
-    line-height: 1.5em;
+  margin-bottom: 30px;
+  font-size: 1.2em;
+  line-height: 1.5em;
 }
 
 .buttons {
-    display: flex;
-    gap: 20px;
+  display: flex;
+  gap: 20px;
 }
 
 .btn {
-    --white: #ffffff;
-    font-size: 15px;
-    padding: 0.7em 2.7em;
-    letter-spacing: 0.06em;
-    position: relative;
-    font-family: inherit;
-    border-radius: 0.6em;
-    overflow: hidden;
-    transition: all 0.3s;
-    line-height: 1.4em;
-    border: 2px solid var(--white);
-    background: linear-gradient(to right, rgba(255, 255, 255, 0.1) 1%, transparent 40%, transparent 60%, rgba(255, 255, 255, 0.1) 100%);
-    color: var(--white);
-    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.4), 0 0 9px 3px rgba(255, 255, 255, 0.1);
-    cursor: pointer;
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 1s ease forwards;
+  --white: #ffffff;
+  font-size: 15px;
+  padding: 0.7em 2.7em;
+  letter-spacing: 0.06em;
+  position: relative;
+  font-family: inherit;
+  border-radius: 0.6em;
+  overflow: hidden;
+  transition: all 0.3s;
+  line-height: 1.4em;
+  border: 2px solid var(--white);
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.1) 1%, transparent 40%, transparent 60%, rgba(255, 255, 255, 0.1) 100%);
+  color: var(--white);
+  box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.4), 0 0 9px 3px rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s ease forwards;
 }
 
 .btn:nth-child(1) {
-    animation-delay: 0.5s;
+  animation-delay: 0.5s;
 }
 
 .btn:nth-child(2) {
-    animation-delay: 0.75s;
+  animation-delay: 0.75s;
 }
 
 .btn:hover {
-    color: #ffffff;
-    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.6), 0 0 9px 3px rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.6), 0 0 9px 3px rgba(255, 255, 255, 0.2);
 }
 
 .btn:before {
-    content: "";
-    position: absolute;
-    left: -4em;
-    width: 4em;
-    height: 100%;
-    top: 0;
-    transition: transform 0.4s ease-in-out;
-    background: linear-gradient(to right, transparent 1%, rgba(255, 255, 255, 0.1) 40%, rgba(255, 255, 255, 0.1) 60%, transparent 100%);
+  content: "";
+  position: absolute;
+  left: -4em;
+  width: 4em;
+  height: 100%;
+  top: 0;
+  transition: transform 0.4s ease-in-out;
+  background: linear-gradient(to right, transparent 1%, rgba(255, 255, 255, 0.1) 40%, rgba(255, 255, 255, 0.1) 60%, transparent 100%);
 }
 
 .btn:hover:before {
-    transform: translateX(15em);
+  transform: translateX(15em);
 }
 
 @keyframes gradient-flow {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
+  0% {
+      background-position: 0% 50%;
+  }
+  50% {
+      background-position: 100% 50%;
+  }
+  100% {
+      background-position: 0% 50%;
+  }
 }
 
 @keyframes fadeInUp {
-    0% {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  0% {
+      opacity: 0;
+      transform: translateY(20px);
+  }
+  100% {
+      opacity: 1;
+      transform: translateY(0);
+  }
 }
 
 .ring {
-    position: absolute;
-    bottom: -800px;
-    right: -600px;
-    width: 1000px;
-    height: 1000px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  position: absolute;
+  bottom: -800px;
+  right: -600px;
+  width: 1000px;
+  height: 1000px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .ring i {
-    position: absolute;
-    inset: 0;
-    border: 2px solid #fff;
-    transition: 0.5s;
+  position: absolute;
+  inset: 0;
+  border: 2px solid #fff;
+  transition: 0.5s;
 }
 .ring i:nth-child(1) {
-    border-radius: 38% 62% 63% 37% / 41% 44% 56% 59%;
-    animation: animate 10s linear infinite;
+  border-radius: 38% 62% 63% 37% / 41% 44% 56% 59%;
+  animation: animate 10s linear infinite;
 }
 .ring i:nth-child(2) {
-    border-radius: 41% 44% 56% 59%/38% 62% 63% 37%;
-    animation: animate 8s linear infinite;
+  border-radius: 41% 44% 56% 59%/38% 62% 63% 37%;
+  animation: animate 8s linear infinite;
 }
 .ring i:nth-child(3) {
-    border-radius: 41% 44% 56% 59%/38% 62% 63% 37%;
-    animation: animate2 14s linear infinite;
+  border-radius: 41% 44% 56% 59%/38% 62% 63% 37%;
+  animation: animate2 14s linear infinite;
 }
 
 .ring2 {
-    position: absolute;
-    bottom: -50px;
-    right: -50px;
-    width: 2000px;
-    height: 2000px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: -10;
+  position: absolute;
+  bottom: -50px;
+  right: -50px;
+  width: 2000px;
+  height: 2000px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 0;
 }
 .ring2 i {
-    position: absolute;
-    inset: 0;
-    border: 2px solid #fff;
-    transition: 0.5s;
+  position: absolute;
+  inset: 0;
+  border: 2px solid #fff;
+  transition: 0.5s;
 }
 .ring2 i:nth-child(1) {
-    border-radius: 38% 62% 63% 37% / 41% 44% 56% 59%;
-    animation: animate 13s linear infinite;
+  border-radius: 38% 62% 63% 37% / 41% 44% 56% 59%;
+  animation: animate 13s linear infinite;
 }
 .ring2 i:nth-child(2) {
-    border-radius: 41% 44% 56% 59%/38% 62% 63% 37%;
-    animation: animate 11s linear infinite;
+  border-radius: 41% 44% 56% 59%/38% 62% 63% 37%;
+  animation: animate 11s linear infinite;
 }
 .ring2 i:nth-child(3) {
-    border-radius: 41% 44% 56% 59%/38% 62% 63% 37%;
-    animation: animate2 17s linear infinite;
+  border-radius: 41% 44% 56% 59%/38% 62% 63% 37%;
+  animation: animate2 17s linear infinite;
 }
 
 @keyframes animate {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
+  0% {
+      transform: rotate(0deg);
+  }
+  100% {
+      transform: rotate(360deg);
+  }
 }
 @keyframes animate2 {
-    0% {
-        transform: rotate(360deg);
-    }
-    100% {
-        transform: rotate(0deg);
-    }
+  0% {
+      transform: rotate(360deg);
+  }
+  100% {
+      transform: rotate(0deg);
+  }
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+  .content {
+      padding: 20px;
+  }
+
+  .text h1 {
+      font-size: 3em;
+  }
+
+  .text h2 {
+      font-size: 1.2em;
+  }
+
+  .text p {
+      font-size: 1em;
+  }
+
+  .btn {
+      font-size: 12px;
+      padding: 0.5em 1.5em;
+  }
+
+  .ring {
+      bottom: -500px;
+      right: -300px;
+      width: 600px;
+      height: 600px;
+  }
+
+  .ring2 {
+      bottom: -50px;
+      right: -50px;
+      width: 1000px;
+      height: 1000px;
+  }
+}
+
+@media (max-width: 480px) {
+  .text h1 {
+      font-size: 2.5em;
+  }
+
+  .text h2 {
+      font-size: 1em;
+  }
+
+  .text p {
+      font-size: 0.9em;
+  }
+
+  .btn {
+      font-size: 10px;
+      padding: 0.4em 1.2em;
+  }
+
+  .ring {
+      bottom: -400px;
+      right: -200px;
+      width: 500px;
+      height: 500px;
+  }
+
+  .ring2 {
+      bottom: -50px;
+      right: -50px;
+      width: 800px;
+      height: 800px;
+  }
 }

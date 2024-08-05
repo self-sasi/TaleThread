@@ -1,0 +1,47 @@
+<div class="e-card playing">
+
+  <div class="form-container">
+    <div class="header">
+
+      <h2>Create Thread</h2>
+
+      <span class="svg-span">
+        <svg class="my-svg" width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:#87CEEB;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#FFB6C1;stop-opacity:1" />
+            </linearGradient>
+          </defs>
+          <path d="M32 16L4 44M35 30H18M40.48 24.48C42.7317 22.2283 43.9967 19.1744 43.9967 15.99C43.9967 12.8056 42.7317 9.75169 40.48 7.5C38.2283 5.24831 35.1744 3.98333 31.99 3.98333C28.8056 3.98333 25.7517 5.24831 23.5 7.5L10 21V38H27L40.48 24.48Z" stroke="url(#grad1)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+
+    </div>
+
+    <form [formGroup]="threadSpecifications" (ngSubmit)="onPost()">
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" id="title" name="title" placeholder="Title" formControlName="title">
+      </div>
+      <div class="form-group">
+        <label for="maxContributors">Maximum Contributors <i class="fa-solid fa-circle-info"></i></label>
+        <input type="number" id="maxContributors" name="maxContributors" placeholder="Maximum Contributors" formControlName="maxContributors">
+      </div>
+      <div class="form-group">
+        <label for="maxWords">Maximum Words per Contributor <i class="fa-solid fa-circle-info"></i></label>
+        <input type="number" id="maxWords" name="maxWords" placeholder="Maximum Words per Contributor" formControlName="maxWords">
+      </div>
+      <div class="form-group">
+        <label for="description">Thread Description</label>
+        <textarea id="description" name="description" placeholder="Thread Description" formControlName="description"></textarea>
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <div class="wave"></div>
+  <div class="wave"></div>
+  <div class="wave"></div>
+
+</div>

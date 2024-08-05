@@ -37,8 +37,10 @@
     position: relative;
 
     width: 500px;
+    min-width: 500px;
 
     height: 500px;
+    min-height: 500px;
 
     display: flex;
 

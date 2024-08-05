@@ -7,6 +7,13 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = ['id', 'username']
 
+class ProfileFriendSerializer(serializers.ModelSerializer):
+    user = UserSerializer(read_only=True)
+
+    class Meta:
+        model = Profile
+        fields = ['user', 'avatar']
+
 class ProfileSerializer(serializers.ModelSerializer):
     user = UserSerializer(read_only=True)
     friendlist = serializers.SerializerMethodField()
@@ -14,16 +21,16 @@ class ProfileSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Profile
-        fields = ['user', 'avatar', 'fav_genres', 'age', 'inktokens', 'friendlist','friend_requests_received']
+        fields = ['user', 'avatar', 'fav_genres', 'age', 'inktokens', 'friendlist', 'friend_requests_received']
         read_only_fields = ['inktokens']
 
     def get_friendlist(self, obj):
         friends = obj.friendlist.all()
-        return UserSerializer([friend.user for friend in friends], many=True).data
-    
+        return ProfileFriendSerializer(friends, many=True).data
+
     def get_friend_requests_received(self, obj):
         requests = obj.friend_requests_received.all()
-        return UserSerializer([request.user for request in requests], many=True).data
+        return ProfileFriendSerializer(requests, many=True).data
 
 class PublicProfileSerializer(serializers.ModelSerializer):
     user = UserSerializer(read_only=True)

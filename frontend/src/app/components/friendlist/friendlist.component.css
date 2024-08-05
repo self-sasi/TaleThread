@@ -1,38 +1,63 @@
 .friends-list {
   width: 100%;
-  max-width: 600px;
+  max-width: 650px;
   height: 400px; /* Fixed height */
   margin: 0 auto;
   padding: 20px;
-  background: #333;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  background: RGBA(255, 255, 255, 0.065);
+  border-radius: 5px;
+  box-shadow: 0 8px 16px rgba(255, 255, 255, 0.1);
   color: #fff;
   overflow: hidden;
 }
 
-.friends-list h2 {
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.friends-list .heading {
   text-align: center;
   margin-bottom: 20px;
+  padding: 10px;
   color: #fff;
+  width: 275px;
+  display: inline-block;
+  font-size: x-large;
+  background-color: transparent;
+  border: 1.5px solid transparent;
+  border-radius: 20px 20px;
+  transition: 0.2s ease-in-out;
+}
+
+.heading:hover {
+  border: 1.5px solid RGBA(255, 255, 255, 0.075) !important;
+  cursor: pointer;
+}
+
+.selected {
+  border: 1.5px solid RGBA(255, 255, 255, 0.075) !important;
+  cursor: pointer;
 }
 
 .friends-list ul {
   list-style-type: none;
   padding: 0;
   margin: 0;
-  max-height: calc(100% - 60px); /* Adjusted for padding and heading */
+  height: calc(100% - 60px); /* Adjusted for padding and heading */
   overflow-y: auto;
+  border: 1.5px solid RGBA(255, 255, 255, 0.075);
+  border-radius: 5px;
 }
 
 .friends-list li {
-  margin-bottom: 15px;
+  margin: 15px 25px;
 }
 
 .friend-card {
   display: flex;
   align-items: center;
-  background: #444;
+  background: RGBA(255, 255, 255, 0.075);
   padding: 10px;
   border-radius: 5px;
   transition: transform 0.3s ease, background 0.3s ease;
@@ -40,7 +65,7 @@
 
 .friend-card:hover {
   transform: translateY(-3px);
-  background: #555;
+  background:RGBA(255, 255, 255, 0.1);
 }
 
 .friend-card img {
@@ -79,6 +104,21 @@
 
 .view-profile-btn:hover {
   background-color: #2980b9;
+}
+
+.accept-request-btn {
+  background-color: #32CD32;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  min-width: 75px;
+}
+
+.accept-request-btn:hover {
+  background-color: #3CB371;
 }
 
 .remove-friend-btn {
