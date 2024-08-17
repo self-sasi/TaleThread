@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { NgIf } from '@angular/common';
-import { UpOrDownVoteService } from '../../services/upordownvote.service';
+import { UpOrDownVoteService } from '../../../services/upordownvote.service';
 
 @Component({
   selector: 'app-contribution-tooltip',
@@ -32,7 +32,7 @@ export class ContributionTooltipComponent {
         alert(JSON.stringify(err));
       }
     });
-    this.likes ? this.likes += 1 : 0;
+    // this.likes ? this.likes += 1 : 0;
   }
 
   downvote(thread_id : any, contribution_id : any) {

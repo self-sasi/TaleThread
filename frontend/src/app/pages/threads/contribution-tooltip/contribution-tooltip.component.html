@@ -7,11 +7,11 @@
         </div>
         <div class="flex flex-row justify-between">
             <div class="flex flex-row gap-3">
-                <div class="flex flex-row gap-1">
+                <div class="flex flex-row gap-1 items-center">
                     <img src="icons/thumbs_up.svg" alt="thread_logo" (click)="upvote(thread_id, contribution_id)" class="hover:opacity-80 hover:cursor-pointer">
                     <span class="text-[#6CFF60]">{{ likes }}</span>
                 </div>
-                <div class="flex flex-row gap-1">
+                <div class="flex flex-row gap-1 items-center">
                     <img src="icons/thumbs_down.svg" alt="thread_logo" (click)="downvote(thread_id, contribution_id)" class="hover:opacity-80 hover:cursor-pointer">
                     <span class="text-[#FF4848]">{{ dislikes }}</span>
                 </div>

@@ -111,7 +111,7 @@ class ContributionViewSet(viewsets.ModelViewSet):
         print(concatenated_content)
                 
         # Construct the prompt for OpenAI API
-        prompt = f"Given the following story: {concatenated_content}\nPlease provide a recommended continuation for this story, but MAKE SURE you don't exceed {max_words} words!! VERY IMPORTANT!!Don't forget to keep the tone and style consistent with the story so far.Don't say anything else in your response, just the continuation."
+        prompt = f"Given the following story: {concatenated_content}\nPlease provide a recommended continuation for this story, but MAKE SURE you don't exceed {max_words} words!! VERY IMPORTANT!!Don't forget to keep the tone and style consistent with the story so far.Don't say anything else in your response, just the continuation.IMPORTANT: do not add ANY newline characters (\n) because i just want to have responses as one string."
     
         # OpenAI API request
         client = OpenAI(api_key=settings.OPENAI_API_KEY)

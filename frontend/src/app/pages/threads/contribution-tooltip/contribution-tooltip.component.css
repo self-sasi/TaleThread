@@ -9,8 +9,7 @@
     /* left: 50%;
     transform: translateX(-50%); */
     white-space: nowrap;
-    z-index: 1000; /* Ensures tooltip appears above other content */
-    
+    z-index: 10000;
 }
 
 .triangle {
@@ -24,6 +23,10 @@
     top: -10px;
     left: 50%;
     transform: translateX(-50%);
+}
+
+.box {
+    box-shadow: #000000 0rem 0rem 0.5rem;
 }
 
 /* Box shadow pseudoelement */

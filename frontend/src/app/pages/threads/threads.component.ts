@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ThreadsService } from '../../services/threads.service';
-import { ContributionTooltipComponent } from './contribution-tooltip.component';
-import { NgIf, NgFor } from '@angular/common';
+import { ContributionTooltipComponent } from './contribution-tooltip/contribution-tooltip.component';
+import { AddContributionComponent } from './add-contribution/add-contribution.component';
+import { NgIf, NgFor, CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-threads',
   standalone: true,
-  imports: [ContributionTooltipComponent, NgIf, NgFor],
+  imports: [ContributionTooltipComponent, AddContributionComponent, NgIf, NgFor, CommonModule],
   templateUrl: './threads.component.html',
   styleUrl: './threads.component.css'
 })
@@ -16,7 +17,12 @@ export class ThreadsComponent implements OnInit{
   tooltipVisibleMap: { [key: string]: boolean } = {};
   tooltipVisible: boolean | undefined;
 
+  addContributionPopupVisibleMap: { [key: string]: boolean } = {};
+  addContributionPopupVisible: boolean = false;
+
   pinnedTooltip: number | undefined;
+
+  showAdvice: boolean | undefined;
 
   constructor ( private threadsService : ThreadsService) {
 
@@ -25,6 +31,12 @@ export class ThreadsComponent implements OnInit{
   ngOnInit(): void {
     this.getThreads('1');
     this.tooltipVisible = false;
+    
+    this.showAdvice = true;
+
+    setTimeout(() => {
+      this.showAdvice = false;
+    }, 5000);
   }
 
   getThreads(threadId? : any) {
@@ -56,6 +68,14 @@ export class ThreadsComponent implements OnInit{
     return item.id;
   }
 
+  showAddContributionPopup(thread_id : any) {
+    this.addContributionPopupVisibleMap[thread_id] = true;
+  }
+
+  hideAddContributionPopup(thread_id : any) {
+    this.addContributionPopupVisibleMap[thread_id] = false;
+  }
+ 
   formatDateTime(dateTimeString: string): string {
     const dateObj = new Date(dateTimeString);
 
