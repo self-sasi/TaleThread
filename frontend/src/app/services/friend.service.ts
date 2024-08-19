@@ -1,26 +1,30 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FriendService {
-
-  constructor( private http : HttpClient) { }
+  private domain: string | undefined;
+  
+  constructor(private http : HttpClient) { 
+    this.domain = environment.domain;
+  }
 
   sendRequest( username : string ) {
-    return this.http.post(`http://127.0.0.1:8000/profile/send_request/${username}`, {});
+    return this.http.post(`${this.domain}/profile/send_request/${username}`, {});
   }
 
   acceptRequest( username : string ) {
-    return this.http.post(`http://127.0.0.1:8000/profile/accept_request/${username}`, {});
+    return this.http.post(`${this.domain}/profile/accept_request/${username}`, {});
   }
 
   rejectRequest( username : string ) {
-    return this.http.post(`http://127.0.0.1:8000/profile/reject_request/${username}`, {});
+    return this.http.post(`${this.domain}/profile/reject_request/${username}`, {});
   }
 
   remove( username : string ) {
-    return this.http.delete(`http://127.0.0.1:8000/profile/remove_friend/${username}`);
+    return this.http.delete(`${this.domain}/profile/remove_friend/${username}`);
   }
 }

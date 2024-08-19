@@ -5,19 +5,15 @@ import { environment } from '../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class ElseprofileService {
+export class ContributionService {
 
-  username : string = '';private domain: string | undefined;
+  private domain: string | undefined;
   
   constructor(private http : HttpClient) { 
     this.domain = environment.domain;
   }
 
-  get() {
-    return this.http.get(`${this.domain}/profile/${this.username}`);
-  }
-
-  set( elseUsername : string) {
-    this.username = elseUsername;
+  writeContribution(threadId : string, contributionText: string) {
+    return this.http.post(`${this.domain}/threads/${threadId}/contributions/`, {"content": contributionText});
   }
 }

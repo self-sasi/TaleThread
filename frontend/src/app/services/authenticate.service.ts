@@ -1,18 +1,23 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from '../../environments/environment';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticateService {
+  private domain: string | undefined;
 
-  constructor(private http : HttpClient) { }
+  constructor(private http : HttpClient) { 
+    this.domain = environment.domain;
+  }
 
   signup( user : any) {
-    return this.http.post("http://127.0.0.1:8000/auth/signup", user);
+    return this.http.post(`${this.domain}/auth/signup`, user);
   }
 
   login( user : any) {
-    return this.http.post("http://127.0.0.1:8000/auth/login", user);
+    return this.http.post(`${this.domain}/auth/login`, user);
   }
 }

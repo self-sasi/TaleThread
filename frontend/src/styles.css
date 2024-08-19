@@ -2,6 +2,11 @@
 @import "primeng/resources/themes/luna-pink/theme.css";
 @import "primeng/resources/primeng.css";
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
 *{
   margin: 0;
   padding: 0;
