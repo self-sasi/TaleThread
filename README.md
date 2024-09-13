@@ -82,7 +82,7 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-The UW Acronym Finder is your go-to tool for decoding the myriad of acronyms you'll encounter at the University of Waterloo. Whether you're a new student trying to make sense of the campus lingo or a seasoned professor needing a quick reference, this search engine has got you covered.
+**TaleThread** is a social media application designed to enhance story writing through collaborative features and real-time assistance.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -156,8 +156,6 @@ Application will be running at http://localhost:4200/
 
 <!-- USAGE EXAMPLES -->
 ## Usage
-
-**Talethread** is a social media application designed to enhance story writing through collaborative features and real-time assistance. Here are the main functionalities you can utilize:
 
 1. **Collaborative Story Writing**  
    Create and edit stories collaboratively with other users. Simply start a new story or join an existing one, and collaborate in real-time to develop engaging narratives.  
