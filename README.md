@@ -80,7 +80,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+![product screenshot](./frontend/public/demo/product-screenshot.png)
 
 **TaleThread** is a social media application designed to enhance story writing through collaborative features and real-time assistance.
 
