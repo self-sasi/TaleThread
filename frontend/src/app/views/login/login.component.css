@@ -32,7 +32,7 @@
 
 }
 
-.ring {
+.ringg {
 
     position: relative;
 
@@ -50,7 +50,7 @@
 
 }
 
-.ring i {
+.ringg i {
 
     position: absolute;
 
@@ -62,7 +62,7 @@
 
 }
 
-.ring i:nth-child(1) {
+.ringg i:nth-child(1) {
 
     border-radius: 38% 62% 63% 37% / 41% 44% 56% 59%;
 
@@ -70,7 +70,7 @@
 
 }
 
-.ring i:nth-child(2) {
+.ringg i:nth-child(2) {
 
     border-radius: 41% 44% 56% 59%/38% 62% 63% 37%;
 
@@ -78,7 +78,7 @@
 
 }
 
-.ring i:nth-child(3) {
+.ringg i:nth-child(3) {
 
     border-radius: 41% 44% 56% 59%/38% 62% 63% 37%;
 
@@ -86,7 +86,7 @@
 
 }
 
-.ring:hover i {
+.ringg:hover i {
   border: 6px solid var(--clr);
   filter: drop-shadow(0 0 20px var(--clr));
 }

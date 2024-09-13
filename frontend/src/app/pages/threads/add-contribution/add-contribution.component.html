@@ -9,34 +9,42 @@
         <i class="fa-solid fa-times text-red-500 text-xl hover:cursor-pointer" (click)="emitHideAddContributionPopup(thread.id)"></i>
     </div>
     <!-- contributions -->
-    <h1>Current thread:</h1>
-    <div class="contributions-container mt-2">
-        <div *ngFor="let contribution of thread.contributions; trackBy: trackById" class="contribution-item">
-            <span class="hover:text-green-300 cursor-pointer transition"
-              (mouseenter)="showTooltip(contribution)"
-              (mouseleave)="hideTooltip(contribution)"
-              (click)="pinTooltip(contribution)">
-              {{contribution.content}}
-            </span>
-            <app-contribution-tooltip
-              *ngIf="tooltipVisibleMap[contribution.id]"
-              class="thread-tooltip"
-              [author]="contribution.user"
-              [contributionDateTime]="contribution.updated_at"
-              [parentFormatFunction]="formatDateTime"
-              [likes]="contribution.upvotes"
-              [dislikes]="contribution.downvotes"
-              [contribution_id]="contribution.id"
-              [thread_id]="contribution.thread"
-              [tooltipVisibleMap]="tooltipVisibleMap">
-            </app-contribution-tooltip>
-        </div>
-    </div>
+    @if (thread.contributions.length > 0) {
+      <h1>Current thread:</h1>
+      <div class="contributions-container mt-2">
+          <div *ngFor="let contribution of thread.contributions; trackBy: trackById" class="contribution-item">
+              <span class="hover:text-green-300 cursor-pointer transition"
+                (mouseenter)="showTooltip(contribution)"
+                (mouseleave)="hideTooltip(contribution)"
+                (click)="pinTooltip(contribution)">
+                {{contribution.content}}
+              </span>
+              <app-contribution-tooltip
+                *ngIf="tooltipVisibleMap[contribution.id]"
+                class="thread-tooltip"
+                [author]="contribution.user"
+                [contributionDateTime]="contribution.updated_at"
+                [parentFormatFunction]="formatDateTime"
+                [likes]="contribution.upvotes"
+                [dislikes]="contribution.downvotes"
+                [contribution_id]="contribution.id"
+                [thread_id]="contribution.thread"
+                [tooltipVisibleMap]="tooltipVisibleMap">
+              </app-contribution-tooltip>
+          </div>
+      </div>
+    }
 
     <!-- textbox -->
     <div class="flex flex-row justify-between mt-10">
-      <h1 class="">Your contribution:</h1>
-
+      @if (thread.contributions.length == 0) {
+        <h1 class="">Start the story:</h1>
+      }
+      
+      @else {
+        <h1 class="">Your contribution:</h1>
+      }
+      
       <div class="flex flex-row items-center gap-2">
         <p class="text-sm">Feeling stuck?</p>
         <div class="p-1 rounded-md bg-gray-700 flex flex-row w-fit gap-1 h-fit hover:cursor-pointer hover:opacity-90 transition" (click)="getAIRecommendation(thread.id)">

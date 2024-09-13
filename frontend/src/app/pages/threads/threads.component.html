@@ -3,7 +3,7 @@
     <h1 class="text-3xl mb-5 font-bold">Threads</h1>
   </div>
 
-  <div [ngClass]="{'fade-out': !showAdvice}" id="advice" class="flex flex-col items-end">
+  <div *ngIf="threads.length > 0" [ngClass]="{'fade-out': !showAdvice}" id="advice" class="flex flex-col items-end">
     <p class="text-lg mb-2">Click me to add a contribution!</p>
     <i class="fas fa-arrow-down-long animate-bounce mr-12"></i>
   </div>

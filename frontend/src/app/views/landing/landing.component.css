@@ -46,7 +46,7 @@ body, html {
 
 .text h1 {
   font-size: 4em;
-  font-weight: 500;
+  font-weight: 700;
   margin-bottom: 10px;
   background: linear-gradient(270deg, #ff00ff, #00ffff, #66ff66, #ff00ff);
   background-size: 200% 200%;
