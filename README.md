@@ -37,7 +37,7 @@
   <p align="center">
     Social media app for creative writers.
     <br />
-    <a href="https://github.com/self-sasi/talethread"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/self-sasi/TaleThread/blob/main/README.md#about-the-project"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     <!-- <a href="https://uw-acronym-finder.vercel.app">🚀 View Live</a>
